@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tienda_comida/home/food_page_body.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
 import 'package:flutter_tienda_comida/widgets/big_text.dart';
 import 'package:flutter_tienda_comida/widgets/small_text.dart';
@@ -27,7 +28,11 @@ class _MainFoodPageState extends State<MainFoodPage> {
                 Column(
                   children: [
                     BigText(text: "Bengladesh", color: AppColors.mainColor,), //Pais
-                    SmallText(text: "Narsingdi", color: Colors.black54)
+                    //Hacer un tipo lista del departamento
+                    Row(children: [
+                      SmallText(text: "Narsingdi", color: Colors.black54),
+                      Icon(Icons.arrow_drop_down_circle_rounded)
+                    ],)
                   ], 
                 ),
                 Center(
@@ -39,10 +44,10 @@ class _MainFoodPageState extends State<MainFoodPage> {
                     borderRadius: BorderRadius.circular(15), color: AppColors.mainColor),
                   )
                 )
-              ],
-            ),
-          ),
-      )]),
+              ],),
+          ),),
+      FoodPageBody()
+      ]),
     );
   }
 }
