@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tienda_comida/utils/dimensiones.dart';
 
 class BigText extends StatelessWidget {
   Color? color;
@@ -6,7 +7,7 @@ class BigText extends StatelessWidget {
   double size;
   TextOverflow overflow;
 
-  BigText({Key? key, this.color = const Color(0xFF3322d2b), this.size=20, required this.text, this.overflow=TextOverflow.ellipsis}) : super(key: key);
+  BigText({Key? key, this.color = const Color(0xFF3322d2b), this.size=0, required this.text, this.overflow=TextOverflow.ellipsis}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class BigText extends StatelessWidget {
       overflow: overflow,
       style: TextStyle(
         color: color,
-        fontSize: size,
+        fontSize: size == 0 ? Dimenciones.font20 : 0,
         fontFamily: 'Roboto',
         fontWeight: FontWeight.w400
       ),
