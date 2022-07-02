@@ -1,3 +1,4 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
 import 'package:flutter_tienda_comida/widgets/big_text.dart';
@@ -35,14 +36,27 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 320,
-      child: PageView.builder(
-          controller: pageController,
-          itemCount: 5,
-          itemBuilder: (context, position) {
+    return Column(
+      children: [
+        Container(
+          height: 320,
+          child: PageView.builder(
+            controller: pageController,
+            itemCount: 5,
+            itemBuilder: (context, position) {
             return _buildPageItem(position);
           }),
+        ),
+        new DotsIndicator(
+          dotsCount: 5,
+          position: _currPageValue,
+          decorator: DotsDecorator(
+            activeColor: AppColors.mainColor,
+            size: const Size.square(9.0),
+            activeSize: const Size(18.0, 9.0),
+            activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0),),),
+        ),
+      ],
     );
   }
 
@@ -92,24 +106,17 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               height: 120,
               margin: EdgeInsets.only(left: 30, right: 30, bottom: 30),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0xFFe8e8e8),
-                    blurRadius: 5.0,
-                    offset: Offset(0, 5),
-                  ),
-                  BoxShadow(
-                    color: Colors.white,
-                    offset: Offset(-5, 0)
-                  ),
-                  BoxShadow(
-                    color: Colors.white,
-                    offset: Offset(5, 0)
-                  )
-                ]
-              ),
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0xFFe8e8e8),
+                      blurRadius: 5.0,
+                      offset: Offset(0, 5),
+                    ),
+                    BoxShadow(color: Colors.white, offset: Offset(-5, 0)),
+                    BoxShadow(color: Colors.white, offset: Offset(5, 0))
+                  ]),
               //Informacion de la barra
               child: Container(
                 padding: EdgeInsets.only(top: 15, left: 15, right: 15),
