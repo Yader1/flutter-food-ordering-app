@@ -31,8 +31,12 @@ class Dimenciones {
 
   //Tamaño de icono
   static double iconSize24 = screenHeight / 35.17;
+  static double iconSize16 = screenHeight / 52.75;
 
   //Lista de vistas, tamaños
   static double listViewImgSize = screenWidth / 3.25;
   static double listViewTextContSize = screenWidth / 3.9;
+
+  //Tamaño para los widget populares
+  static double popularFoodImgSize = screenHeight / 2.41;
 }
