@@ -39,15 +39,17 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        //Seccion Slider
         Container(
           height: Dimenciones.pageView,
           child: PageView.builder(
-            controller: pageController,
-            itemCount: 5,
-            itemBuilder: (context, position) {
-            return _buildPageItem(position);
-          }),
+              controller: pageController,
+              itemCount: 5,
+              itemBuilder: (context, position) {
+                return _buildPageItem(position);
+              }),
         ),
+        //dots
         new DotsIndicator(
           dotsCount: 5,
           position: _currPageValue,
@@ -55,7 +57,115 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             activeColor: AppColors.mainColor,
             size: const Size.square(9.0),
             activeSize: const Size(18.0, 9.0),
-            activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0),),),
+            activeShape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+          ),
+        ),
+
+        //Populares
+        SizedBox(
+          height: Dimenciones.height30,
+        ),
+        Container(
+          margin: EdgeInsets.only(left: Dimenciones.width30),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              BigText(text: "Populares"),
+              SizedBox(
+                width: Dimenciones.width10,
+              ),
+              Container(
+                margin: const EdgeInsets.only(bottom: 3),
+                child: BigText(
+                  text: ".",
+                  color: Colors.black26,
+                ),
+              ),
+              SizedBox(
+                width: Dimenciones.width10,
+              ),
+              Container(
+                margin: const EdgeInsets.only(bottom: 2),
+                child: SmallText(text: "Food Pairing"),
+              )
+            ],
+          ),
+        ),
+        //Lista de comidas e imagenes
+        Container(
+          height: 900,
+          child: ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            //shrinkWrap: true,
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return Container(
+                margin: EdgeInsets.only(left: Dimenciones.width20, right: Dimenciones.width20, bottom: Dimenciones.height10),
+                child: Row(
+                  children: [
+                    //Seccion de imagens
+                    Container(
+                      width: 120,
+                      height: 120,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(Dimenciones.radius20),
+                        color: Colors.white38,
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage(
+                              "assets/image/food0.jpg"
+                          ),
+                        ),
+                      ),
+                    ),
+                    //Contenedor de textos
+                    Expanded(
+                      child: Container(
+                      height: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(Dimenciones.radius20),
+                          bottomRight: Radius.circular(Dimenciones.radius20),
+                        ),
+                        color: Colors.white
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.only(left: Dimenciones.width10, right: Dimenciones.width10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            BigText(text: "Nutritious fruit meal in china"),
+                            SizedBox(height: Dimenciones.height10),
+                            SmallText(text: "With chinese characteristics"),
+                            SizedBox(height: Dimenciones.height10),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                IconAndTextWidget(
+                                    icon: Icons.circle_sharp,
+                                    text: "Normal",
+                                    iconColor: AppColors.iconColor1),
+                                IconAndTextWidget(
+                                    icon: Icons.location_on,
+                                    text: "1.2Km",
+                                    iconColor: AppColors.mainColor),
+                                IconAndTextWidget(
+                                    icon: Icons.access_time_rounded,
+                                    text: "32min",
+                                    iconColor: AppColors.iconColor2),
+                              ],
+                            )
+                        ]),
+                      ),
+                    ))
+                  ],
+                ),
+              );
+            },
+        ),
         ),
       ],
     );
@@ -92,7 +202,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         children: [
           Container(
             height: Dimenciones.pageViewContainer,
-            margin: EdgeInsets.only(left: Dimenciones.width10, right: Dimenciones.width10),
+            margin: EdgeInsets.only(
+                left: Dimenciones.width10, right: Dimenciones.width10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimenciones.radius30),
                 color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
@@ -105,7 +216,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             alignment: Alignment.bottomCenter,
             child: Container(
               height: Dimenciones.pageViewTextContainer,
-              margin: EdgeInsets.only(left: Dimenciones.width30, right: Dimenciones.width30, bottom: Dimenciones.height30),
+              margin: EdgeInsets.only(
+                  left: Dimenciones.width30,
+                  right: Dimenciones.width30,
+                  bottom: Dimenciones.height30),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimenciones.radius20),
                   color: Colors.white,
@@ -120,7 +234,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   ]),
               //Informacion de la barra
               child: Container(
-                padding: EdgeInsets.only(top: Dimenciones.height15, left: 15, right: 15),
+                padding: EdgeInsets.only(
+                    top: Dimenciones.height15, left: 15, right: 15),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -153,7 +268,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                           SmallText(text: "comentarios"),
                         ],
                       ),
-                      SizedBox(height: Dimenciones.height20,),
+                      SizedBox(
+                        height: Dimenciones.height20,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
