@@ -14,7 +14,7 @@ class Dimenciones {
   static double height15 = screenHeight / 42.2;
   static double height30 = screenHeight / 28.13;
   static double height45 = screenHeight / 18.76;
-  
+
 // Anchos dinamicos padding y margin
   static double width10 = screenHeight / 84.4;
   static double width20 = screenHeight / 56.27;
@@ -31,4 +31,8 @@ class Dimenciones {
 
   //Tamaño de icono
   static double iconSize24 = screenHeight / 35.17;
+
+  //Lista de vistas, tamaños
+  static double listViewImgSize = screenWidth / 3.25;
+  static double listViewTextContSize = screenWidth / 3.9;
 }
