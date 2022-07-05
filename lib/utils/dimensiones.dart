@@ -23,6 +23,7 @@ class Dimenciones {
 
   //Tamaño de letra
   static double font20 = screenHeight / 42.2;
+  static double font26 = screenHeight / 32.46;
 
   //Radius
   static double radius20 = screenHeight / 42.2;
@@ -39,4 +40,7 @@ class Dimenciones {
 
   //Tamaño para los widget populares
   static double popularFoodImgSize = screenHeight / 2.41;
+
+  //botton height
+  static double buttomHeightBar = screenHeight / 7.03;
 }
