@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tienda_comida/pages/food/popular_food_detalle.dart';
+import 'package:flutter_tienda_comida/pages/food/recommended_food_detail.dart';
 import 'package:flutter_tienda_comida/pages/home/main_food_page.dart';
 import 'package:get/get.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: PopularFoodDetalle(),
+      home: RecommendeFoodDetail(),
     );
   }
 }
