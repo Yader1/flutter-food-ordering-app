@@ -1,24 +1,24 @@
 class Product {
   int? _totalSize;
-  int? _typrId;
+  int? _typeId;
   int? _offset;
   late List<ProductModel> _products;
   List<ProductModel> get products => _products;
 
-  Product(
-      {required totalSize,
-      required typrId,
+  Product({required totalSize,
+      required typeId,
       required offset,
       required products}) {
+        
     this._totalSize = totalSize;
-    this._typrId = typrId;
+    this._typeId = typeId;
     this._offset = offset;
     this._products = products;
   }
 
   Product.fromJson(Map<String, dynamic> json) {
     _totalSize = json['total_size'];
-    _typrId = json['type_id'];
+    _typeId = json['type_id'];
     _offset = json['offset'];
     if (json['products'] != null) {
       _products = <ProductModel>[];
@@ -39,7 +39,7 @@ class ProductModel {
   String? location;
   String? createdAt;
   String? updatedAt;
-  int? typrId;
+  int? typeId;
 
   ProductModel(
       {this.id,
@@ -51,7 +51,8 @@ class ProductModel {
       this.location,
       this.createdAt,
       this.updatedAt,
-      this.typrId});
+      this.typeId}
+    );
 
   ProductModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -63,6 +64,6 @@ class ProductModel {
     location = json['location'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    typrId = json['typr_id'];
+    typeId = json['type_id'];
   }
 }
