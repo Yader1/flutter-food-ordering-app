@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tienda_comida/controllers/popular_product_controller.dart';
 import 'package:flutter_tienda_comida/controllers/recommended_product_controller.dart';
 import 'package:flutter_tienda_comida/models/products_model.dart';
+import 'package:flutter_tienda_comida/pages/food/popular_food_detalle.dart';
 import 'package:flutter_tienda_comida/utils/app_constants.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
 import 'package:flutter_tienda_comida/utils/dimensiones.dart';
@@ -50,14 +51,20 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           return popularProducts.isLoaded
               ? Container(
                   height: Dimenciones.pageView,
-                  child: PageView.builder(
-                      controller: pageController,
-                      // Calculamos el tamaño dej JSON que nos devuleve la API
-                      itemCount: popularProducts.popularProductList.length,
-                      itemBuilder: (context, position) {
-                        return _buildPageItem(position,
-                            popularProducts.popularProductList[position]);
-                      }),
+                  child: GestureDetector(
+                    //Clic para acceder a la pagina de populares
+                    onTap: () {
+                      Get.to(() => PopularFoodDetalle());
+                    },
+                    child: PageView.builder(
+                        controller: pageController,
+                        // Calculamos el tamaño dej JSON que nos devuleve la API
+                        itemCount: popularProducts.popularProductList.length,
+                        itemBuilder: (context, position) {
+                          return _buildPageItem(position,
+                              popularProducts.popularProductList[position]);
+                        }),
+                  ),
                 )
               : CircularProgressIndicator(
                   color: AppColors.mainColor,
@@ -135,9 +142,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                               color: Colors.white38,
                               image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: NetworkImage(
-                                  AppConstants.BASE_URL+AppConstants.UPLOAD_URL+recommendedProduct.recommendedProductList[index].img!
-                                ),
+                                image: NetworkImage(AppConstants.BASE_URL +
+                                    AppConstants.UPLOAD_URL +
+                                    recommendedProduct
+                                        .recommendedProductList[index].img!),
                               ),
                             ),
                           ),
@@ -162,7 +170,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     BigText(
-                                        text: "Nutritious fruit meal in china"),
+                                        text: recommendedProduct
+                                            .recommendedProductList[index]
+                                            .name!),
                                     SizedBox(height: Dimenciones.height10),
                                     SmallText(
                                         text: "With chinese characteristics"),
@@ -194,8 +204,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   },
                 )
               : CircularProgressIndicator(
-                color: AppColors.mainColor,
-              );
+                  color: AppColors.mainColor,
+                );
         })
       ],
     );
