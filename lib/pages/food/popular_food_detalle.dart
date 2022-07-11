@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tienda_comida/pages/home/main_food_page.dart';
+import 'package:flutter_tienda_comida/routes/route_helper.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
 import 'package:flutter_tienda_comida/utils/dimensiones.dart';
 import 'package:flutter_tienda_comida/widgets/app_column.dart';
@@ -40,7 +41,7 @@ class PopularFoodDetalle extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => MainFoodPage());
+                      Get.toNamed(RouteHelper.getInitial());
                     },
                     child: AppIcon(icon: Icons.arrow_back_ios),
                   ),
