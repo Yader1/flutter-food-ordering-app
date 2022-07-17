@@ -52,20 +52,14 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           return popularProducts.isLoaded
               ? Container(
                   height: Dimenciones.pageView,
-                  child: GestureDetector(
-                    //Clic para acceder a la pagina de populares
-                    onTap: () {
-                      Get.toNamed(RouteHelper.getPopularFood());
-                    },
-                    child: PageView.builder(
-                        controller: pageController,
-                        // Calculamos el tamaño dej JSON que nos devuleve la API
-                        itemCount: popularProducts.popularProductList.length,
-                        itemBuilder: (context, position) {
-                          return _buildPageItem(position,
-                              popularProducts.popularProductList[position]);
-                        }),
-                  ),
+                  child: PageView.builder(
+                      controller: pageController,
+                      // Calculamos el tamaño dej JSON que nos devuleve la API
+                      itemCount: popularProducts.popularProductList.length,
+                      itemBuilder: (context, position) {
+                        return _buildPageItem(position,
+                            popularProducts.popularProductList[position]);
+                      }),
                 )
               : CircularProgressIndicator(
                   color: AppColors.mainColor,
@@ -247,19 +241,24 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       transform: matrix,
       child: Stack(
         children: [
-          Container(
-            height: Dimenciones.pageViewContainer,
-            margin: EdgeInsets.only(
-                left: Dimenciones.width10, right: Dimenciones.width10),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimenciones.radius30),
-                color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    //Como es una Img de un servidorse utiliza el siguente Widget
-                    image: NetworkImage(AppConstants.BASE_URL +
-                        AppConstants.UPLOAD_URL +
-                        popularProduct.img!))),
+          GestureDetector(
+            onTap: () {
+              Get.toNamed(RouteHelper.getPopularFood(index));
+            },
+            child: Container(
+              height: Dimenciones.pageViewContainer,
+              margin: EdgeInsets.only(
+                  left: Dimenciones.width10, right: Dimenciones.width10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Dimenciones.radius30),
+                    color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      //Como es una Img de un servidorse utiliza el siguente Widget
+                      image: NetworkImage(AppConstants.BASE_URL +
+                          AppConstants.UPLOAD_URL +
+                          popularProduct.img!))),
+            ),
           ),
           //Diseño del espacio de la informacion de la barra principal
           Align(
