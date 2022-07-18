@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tienda_comida/controllers/popular_product_controller.dart';
 import 'package:flutter_tienda_comida/controllers/recommended_product_controller.dart';
 import 'package:flutter_tienda_comida/models/products_model.dart';
-import 'package:flutter_tienda_comida/pages/food/popular_food_detalle.dart';
 import 'package:flutter_tienda_comida/routes/route_helper.dart';
 import 'package:flutter_tienda_comida/utils/app_constants.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
@@ -112,6 +111,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             ],
           ),
         ),
+        //Recomendaciones de comidas
         //Lista de comidas e imagenes
         GetBuilder<RecommendedProductController>(builder: (recommendedProduct) {
           return recommendedProduct.isLoaded
@@ -122,7 +122,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        Get.toNamed(RouteHelper.recommendedFood);
+                        Get.toNamed(RouteHelper.getRecommendedeFood(index));
                       },
                       child: Container(
                         margin: EdgeInsets.only(

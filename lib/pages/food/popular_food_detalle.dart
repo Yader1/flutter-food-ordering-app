@@ -11,8 +11,8 @@ import 'package:flutter_tienda_comida/widgets/exandable_text_widget.dart';
 import 'package:get/get.dart';
 
 class PopularFoodDetalle extends StatelessWidget {
-  int pageId;
-  PopularFoodDetalle({Key? key, required this.pageId}) : super(key: key);
+  final int pageId;
+  const PopularFoodDetalle({Key? key, required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
