@@ -1,6 +1,8 @@
+import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
 import 'package:flutter_tienda_comida/controllers/popular_product_controller.dart';
 import 'package:flutter_tienda_comida/controllers/recommended_product_controller.dart';
 import 'package:flutter_tienda_comida/data/api/api_client.dart';
+import 'package:flutter_tienda_comida/data/repository/cart_repo.dart';
 import 'package:flutter_tienda_comida/data/repository/popular_product_repo.dart';
 import 'package:flutter_tienda_comida/data/repository/recommended_product_repo.dart';
 import 'package:flutter_tienda_comida/utils/app_constants.dart';
@@ -14,8 +16,10 @@ Future<void> init() async {
   //Llamar nuestros repositorios
   Get.lazyPut(() => PopularProductRepo(apiClient: Get.find()));
   Get.lazyPut(() => RecommendedProductRepo(apiClient: Get.find()));
+  Get.lazyPut(() => CartRepo());
 
   //Controllers
   Get.lazyPut(() => PopularProductController(popularProductRepo: Get.find()));
   Get.lazyPut(() => RecommendedProductController(recommendedProductRepo: Get.find()));
+  Get.lazyPut(() => CartController(cartRepo: Get.find()));
 }

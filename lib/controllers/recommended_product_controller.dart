@@ -17,10 +17,8 @@ class RecommendedProductController extends GetxController {
 
     //Verificamos la respuestas si es positiva o fallida, si devuelve un 200 la respuesta es exitosa
     if (response.statusCode == 200) {
-      print("got products");
       _recommendedProductList = [];
       _recommendedProductList.addAll(Product.fromJson(response.body).products);
-      //print(_popularProductList);
       _isLoaded = true;
       update();
     } else {}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
 import 'package:flutter_tienda_comida/data/repository/popular_product_repo.dart';
 import 'package:flutter_tienda_comida/models/products_model.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
@@ -9,12 +10,18 @@ class PopularProductController extends GetxController {
   PopularProductController({required this.popularProductRepo});
   List<ProductModel> _popularProductList = [];
   List<ProductModel> get popularProductList => _popularProductList;
+  late CartController _cart;
 
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
 
+  //Variables para seleccionar la cantidad de un producto
   int _quantity = 0;
   int get quantity => _quantity;
+
+  //Variables para mostrar cuantas orden hay en el carito
+  int _inCartItems = 0;
+  int get inCartItems => _inCartItems + _quantity;
 
   Future<void> getPopularProductList() async {
     //Preparando los datos Get de los populares
@@ -22,10 +29,8 @@ class PopularProductController extends GetxController {
 
     //Verificamos la respuestas si es positiva o fallida, si devuelve un 200 la respuesta es exitosa
     if (response.statusCode == 200) {
-      print("got products");
       _popularProductList = [];
       _popularProductList.addAll(Product.fromJson(response.body).products);
-      //print(_popularProductList);
       _isLoaded = true;
       update();
     } else {}
@@ -69,8 +74,14 @@ class PopularProductController extends GetxController {
   }
 
   //Metodo para verificar que se inicie todo y se restablesca los valores
-  void initProduct() {
+  void initProduct(CartController cart) {
     _quantity = 0;
-    
+    _inCartItems = 0;
+    _cart = cart;
+    //Condicion si hay datos previamentes guardados
+  }
+
+  void addItem(ProductModel product) {
+    _cart.addItem(product, _quantity);
   }
 }
