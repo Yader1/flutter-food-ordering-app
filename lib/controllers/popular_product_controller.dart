@@ -50,7 +50,7 @@ class PopularProductController extends GetxController {
 
   //Verificamos que la cantidad nosea negativa
   int checkQuantity(int quantity) {
-    if (quantity < 0) {
+    if ((_inCartItems + quantity) < 0) {
       //Mensaje para el usuario
       Get.snackbar(
         "Item count",
@@ -59,7 +59,7 @@ class PopularProductController extends GetxController {
         colorText: Colors.white,
       );
       return 0;
-    } else if (quantity > 20) {
+    } else if ((_inCartItems + quantity) > 20) {
       //Mensaje para el usuario
       Get.snackbar(
         "Item count",
@@ -74,14 +74,32 @@ class PopularProductController extends GetxController {
   }
 
   //Metodo para verificar que se inicie todo y se restablesca los valores
-  void initProduct(CartController cart) {
+  void initProduct(ProductModel product, CartController cart) {
     _quantity = 0;
     _inCartItems = 0;
     _cart = cart;
+
+    var exist = false;
+    exist = _cart.existInCart(product);
+
+    if (exist) {
+      _inCartItems = _cart.getQuantity(product);
+    }
     //Condicion si hay datos previamentes guardados
   }
 
   void addItem(ProductModel product) {
+    //if (_quantity > 0) {
     _cart.addItem(product, _quantity);
+
+    _quantity = 0;
+    _inCartItems = _cart.getQuantity(product);
+
+    _cart.items.forEach((key, value) {
+      print('The id is ' + value.id.toString());
+    });
+    // } else {
+
+    //}
   }
 }
