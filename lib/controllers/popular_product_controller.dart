@@ -89,7 +89,6 @@ class PopularProductController extends GetxController {
   }
 
   void addItem(ProductModel product) {
-    //if (_quantity > 0) {
     _cart.addItem(product, _quantity);
 
     _quantity = 0;
@@ -98,8 +97,11 @@ class PopularProductController extends GetxController {
     _cart.items.forEach((key, value) {
       print('The id is ' + value.id.toString());
     });
-    // } else {
 
-    //}
+    update();
+  }
+
+  int get totalItems {
+    return _cart.totalItems;
   }
 }
