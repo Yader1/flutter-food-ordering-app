@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
 import 'package:flutter_tienda_comida/data/repository/popular_product_repo.dart';
+import 'package:flutter_tienda_comida/models/cart_model.dart';
 import 'package:flutter_tienda_comida/models/products_model.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
 import 'package:get/get.dart';
@@ -58,6 +59,10 @@ class PopularProductController extends GetxController {
         backgroundColor: AppColors.mainColor,
         colorText: Colors.white,
       );
+      if (_inCartItems > 0) {
+        _quantity = -_inCartItems;
+        return _quantity;
+      }
       return 0;
     } else if ((_inCartItems + quantity) > 20) {
       //Mensaje para el usuario
@@ -103,5 +108,9 @@ class PopularProductController extends GetxController {
 
   int get totalItems {
     return _cart.totalItems;
+  }
+
+  List<CartModel> get getItems {
+    return _cart.getItems;
   }
 }

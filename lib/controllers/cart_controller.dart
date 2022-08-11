@@ -83,4 +83,11 @@ class CartController extends GetxController {
     });
     return totalQuantity;
   }
+
+  //Devolver todos los modelos del carrito que se almacenan aqui
+  List<CartModel> get getItems {
+    return _items.entries.map((e) {
+      return e.value;
+    }).toList();
+  }
 }
