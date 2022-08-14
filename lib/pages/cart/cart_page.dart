@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
 import 'package:flutter_tienda_comida/pages/home/main_food_page.dart';
+import 'package:flutter_tienda_comida/routes/route_helper.dart';
 import 'package:flutter_tienda_comida/utils/app_constants.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
 import 'package:flutter_tienda_comida/utils/dimensiones.dart';
@@ -35,7 +36,7 @@ class CartPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => MainFoodPage());
+                      Get.toNamed(RouteHelper.getInitial());
                     },
                     child: AppIcon(
                       icon: Icons.home_outlined,

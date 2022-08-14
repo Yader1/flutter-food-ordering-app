@@ -1,3 +1,4 @@
+import 'package:flutter_tienda_comida/pages/cart/cart_page.dart';
 import 'package:flutter_tienda_comida/pages/food/popular_food_detalle.dart';
 import 'package:flutter_tienda_comida/pages/food/recommended_food_detail.dart';
 import 'package:flutter_tienda_comida/pages/home/main_food_page.dart';
@@ -7,10 +8,13 @@ class RouteHelper {
   static const String initial = "/";
   static const String popularFood = "/popular-food";
   static const String recommendedFood = "/recommended-food";
+  static const String cartPage = "/cart-page";
 
   static String getInitial() => '$initial';
   static String getPopularFood(int pageId) => '$popularFood?pageId=$pageId';
-  static String getRecommendedeFood(int pageId) => '$recommendedFood?pageId=$pageId';
+  static String getRecommendedeFood(int pageId) =>
+      '$recommendedFood?pageId=$pageId';
+  static String getCartPage() => '$cartPage';
 
   static List<GetPage> routes = [
     //Ruta principal
@@ -31,5 +35,12 @@ class RouteHelper {
           return RecommendeFoodDetail(pageId: int.parse(pageId!));
         },
         transition: Transition.fadeIn),
+    //Ruta de carrito
+    GetPage(
+        name: cartPage,
+        page: () {
+          return CartPage();
+        },
+        transition: Transition.fadeIn)
   ];
 }
