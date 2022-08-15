@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
+import 'package:flutter_tienda_comida/controllers/popular_product_controller.dart';
+import 'package:flutter_tienda_comida/controllers/recommended_product_controller.dart';
 import 'package:flutter_tienda_comida/pages/home/main_food_page.dart';
 import 'package:flutter_tienda_comida/routes/route_helper.dart';
 import 'package:flutter_tienda_comida/utils/app_constants.dart';
@@ -76,20 +78,44 @@ class CartPage extends StatelessWidget {
                                   EdgeInsets.only(bottom: Dimenciones.height10),
                               child: Row(
                                 children: [
-                                  Container(
-                                    width: Dimenciones.height20 * 5,
-                                    height: Dimenciones.height20 * 5,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            fit: BoxFit.cover,
-                                            image: NetworkImage(
-                                                AppConstants.BASE_URL +
-                                                    AppConstants.UPLOAD_URL +
-                                                    cartController
-                                                        .getItems[index].img!)),
-                                        borderRadius: BorderRadius.circular(
-                                            Dimenciones.radius20),
-                                        color: Colors.white),
+                                  GestureDetector(
+                                    onTap: () {
+                                      var popularIndex =
+                                          Get.find<PopularProductController>()
+                                              .popularProductList
+                                              .indexOf(
+                                                  _cartList[index].product!);
+
+                                      if (popularIndex >= 0) {
+                                        Get.toNamed(RouteHelper.getPopularFood(
+                                            popularIndex, "cartpage"));
+                                      } else {
+                                        var recommendedIndex = Get.find<
+                                                RecommendedProductController>()
+                                            .recommendedProductList
+                                            .indexOf(_cartList[index].product!);
+
+                                        Get.toNamed(
+                                            RouteHelper.getRecommendedeFood(
+                                                recommendedIndex, "cartpage"));
+                                      }
+                                    },
+                                    child: Container(
+                                      width: Dimenciones.height20 * 5,
+                                      height: Dimenciones.height20 * 5,
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: NetworkImage(
+                                                  AppConstants.BASE_URL +
+                                                      AppConstants.UPLOAD_URL +
+                                                      cartController
+                                                          .getItems[index]
+                                                          .img!)),
+                                          borderRadius: BorderRadius.circular(
+                                              Dimenciones.radius20),
+                                          color: Colors.white),
+                                    ),
                                   ),
                                   SizedBox(
                                     width: Dimenciones.width10,
@@ -114,9 +140,10 @@ class CartPage extends StatelessWidget {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             BigText(
-                                              text: cartController
-                                                  .getItems[index].price
-                                                  .toString(),
+                                              text: "\$ " +
+                                                  cartController
+                                                      .getItems[index].price
+                                                      .toString(),
                                               color: Colors.redAccent,
                                             ),
                                             Container(
