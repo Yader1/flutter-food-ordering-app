@@ -211,6 +211,62 @@ class CartPage extends StatelessWidget {
               ))
         ],
       ),
+      bottomNavigationBar:
+          GetBuilder<CartController>(builder: (cartController) {
+        return Container(
+          height: Dimenciones.buttomHeightBar,
+          padding: EdgeInsets.only(
+              top: Dimenciones.height30,
+              bottom: Dimenciones.height30,
+              left: Dimenciones.width20,
+              right: Dimenciones.width20),
+          decoration: BoxDecoration(
+              color: AppColors.buttonBackgroundColor,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(Dimenciones.radius20 * 2),
+                  topRight: Radius.circular(Dimenciones.radius20 * 2))),
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Container(
+              padding: EdgeInsets.only(
+                  top: Dimenciones.height20,
+                  bottom: Dimenciones.height20,
+                  left: Dimenciones.width20,
+                  right: Dimenciones.width20),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Dimenciones.radius20),
+                  color: Colors.white),
+              child: Row(
+                children: [
+                  SizedBox(width: Dimenciones.width10 / 2),
+                  BigText(text:"\$ " + cartController.totalAmount.toString()),
+                  SizedBox(width: Dimenciones.width10 / 2),
+                ],
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                //popularProducts.addItem(product);
+              },
+              child: Container(
+                padding: EdgeInsets.only(
+                    top: Dimenciones.height20,
+                    bottom: Dimenciones.height20,
+                    left: Dimenciones.width20,
+                    right: Dimenciones.width20),
+                child: BigText(
+                  text: "Check out",
+                  color: Colors.white,
+                ),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Dimenciones.radius20),
+                    color: AppColors.mainColor),
+              ),
+            )
+          ]),
+        );
+      }),
+    
     );
   }
 }

@@ -93,4 +93,15 @@ class CartController extends GetxController {
       return e.value;
     }).toList();
   }
+
+  //Devolver el total a pagar por productos agregados al carrito
+  int get totalAmount {
+    var total = 0;
+
+    _items.forEach((key, value) {
+      total += value.quantity! * value.price!;
+    });
+
+    return total;
+  }
 }
