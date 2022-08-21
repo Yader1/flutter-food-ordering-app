@@ -1,7 +1,7 @@
 import 'package:flutter_tienda_comida/pages/cart/cart_page.dart';
 import 'package:flutter_tienda_comida/pages/food/popular_food_detalle.dart';
 import 'package:flutter_tienda_comida/pages/food/recommended_food_detail.dart';
-import 'package:flutter_tienda_comida/pages/home/main_food_page.dart';
+import 'package:flutter_tienda_comida/pages/home/home_page.dart';
 import 'package:get/get.dart';
 
 class RouteHelper {
@@ -19,7 +19,7 @@ class RouteHelper {
 
   static List<GetPage> routes = [
     //Ruta principal
-    GetPage(name: initial, page: () => MainFoodPage()),
+    GetPage(name: initial, page: () => HomePage()),
     //Ruta de poplares
     GetPage(
         name: popularFood,
