@@ -239,14 +239,14 @@ class CartPage extends StatelessWidget {
               child: Row(
                 children: [
                   SizedBox(width: Dimenciones.width10 / 2),
-                  BigText(text:"\$ " + cartController.totalAmount.toString()),
+                  BigText(text: "\$ " + cartController.totalAmount.toString()),
                   SizedBox(width: Dimenciones.width10 / 2),
                 ],
               ),
             ),
             GestureDetector(
               onTap: () {
-                //popularProducts.addItem(product);
+                cartController.addToHistory();
               },
               child: Container(
                 padding: EdgeInsets.only(
@@ -266,7 +266,6 @@ class CartPage extends StatelessWidget {
           ]),
         );
       }),
-    
     );
   }
 }
