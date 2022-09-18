@@ -139,7 +139,7 @@ class CartPage extends StatelessWidget {
                                           width: Dimenciones.width10,
                                         ),
                                         Expanded(
-                                            child: Container(
+                                          child: Container(
                                           height: Dimenciones.height20 * 5,
                                           child: Column(
                                             crossAxisAlignment:
@@ -169,13 +169,13 @@ class CartPage extends StatelessWidget {
                                                   Container(
                                                     padding: EdgeInsets.only(
                                                         top: Dimenciones
-                                                            .height10,
+                                                            .height10/2,
                                                         bottom: Dimenciones
-                                                            .height10,
+                                                            .height10/2,
                                                         left:
                                                             Dimenciones.width10,
                                                         right: Dimenciones
-                                                            .width10),
+                                                            .width10/2),
                                                     decoration: BoxDecoration(
                                                         borderRadius:
                                                             BorderRadius.circular(
@@ -254,49 +254,57 @@ class CartPage extends StatelessWidget {
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(Dimenciones.radius20 * 2),
                   topRight: Radius.circular(Dimenciones.radius20 * 2))),
-          child: cartController.getItems.length > 0 ? Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Container(
-              padding: EdgeInsets.only(
-                  top: Dimenciones.height20,
-                  bottom: Dimenciones.height20,
-                  left: Dimenciones.width20,
-                  right: Dimenciones.width20),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimenciones.radius20),
-                  color: Colors.white),
-              child: Row(
-                children: [
-                  SizedBox(width: Dimenciones.width10 / 2),
-                  BigText(text: "\$ " + cartController.totalAmount.toString()),
-                  SizedBox(width: Dimenciones.width10 / 2),
-                ],
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                if (Get.find<AuthController>().userLoggedIn()) {
-                  print("tapped");
-                  cartController.addToHistory();
-                } else {
-                  Get.toNamed(RouteHelper.getSignInPage());
-                }
-              },
-              child: Container(
-                padding: EdgeInsets.only(
-                    top: Dimenciones.height20,
-                    bottom: Dimenciones.height20,
-                    left: Dimenciones.width20,
-                    right: Dimenciones.width20),
-                child: BigText(
-                  text: "Check out",
-                  color: Colors.white,
-                ),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(Dimenciones.radius20),
-                    color: AppColors.mainColor),
-              ),
-            )
-          ]): Container(),
+          child: cartController.getItems.length > 0
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                      Container(
+                        padding: EdgeInsets.only(
+                            top: Dimenciones.height20,
+                            bottom: Dimenciones.height20,
+                            left: Dimenciones.width20,
+                            right: Dimenciones.width20),
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.circular(Dimenciones.radius20),
+                            color: Colors.white),
+                        child: Row(
+                          children: [
+                            SizedBox(width: Dimenciones.width10 / 2),
+                            BigText(
+                                text: "\$ " +
+                                    cartController.totalAmount.toString()),
+                            SizedBox(width: Dimenciones.width10 / 2),
+                          ],
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          if (Get.find<AuthController>().userLoggedIn()) {
+                            print("tapped");
+                            cartController.addToHistory();
+                          } else {
+                            Get.toNamed(RouteHelper.getSignInPage());
+                          }
+                        },
+                        child: Container(
+                          padding: EdgeInsets.only(
+                              top: Dimenciones.height20,
+                              bottom: Dimenciones.height20,
+                              left: Dimenciones.width20,
+                              right: Dimenciones.width20),
+                          child: BigText(
+                            text: "Check out",
+                            color: Colors.white,
+                          ),
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.circular(Dimenciones.radius20),
+                              color: AppColors.mainColor),
+                        ),
+                      )
+                    ])
+              : Container(),
         );
       }),
     );
