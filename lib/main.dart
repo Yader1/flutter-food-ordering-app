@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
 import 'package:flutter_tienda_comida/controllers/popular_product_controller.dart';
 import 'package:flutter_tienda_comida/controllers/recommended_product_controller.dart';
+import 'package:flutter_tienda_comida/pages/auth/sign_in_page.dart';
+import 'package:flutter_tienda_comida/pages/auth/sign_up_page.dart';
 import 'package:flutter_tienda_comida/pages/home/main_food_page.dart';
 import 'package:flutter_tienda_comida/routes/route_helper.dart';
 import 'package:get/get.dart';
@@ -25,6 +27,7 @@ class MyApp extends StatelessWidget {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
+          //home: SignInPage(),
           initialRoute: RouteHelper.getSplashPage(),
           getPages: RouteHelper.routes,
         );
