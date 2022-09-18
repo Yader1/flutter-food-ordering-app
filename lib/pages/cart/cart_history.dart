@@ -146,7 +146,7 @@ class CartHistory extends StatelessWidget {
                                           }),
                                         ),
                                         Container(
-                                          height: Dimenciones.height20 * 4,
+                                          height: Dimenciones.height20 * 5,
                                           child: Column(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.spaceEvenly,
