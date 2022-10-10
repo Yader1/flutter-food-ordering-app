@@ -14,6 +14,8 @@ import 'package:flutter_tienda_comida/widgets/big_text.dart';
 import 'package:flutter_tienda_comida/widgets/small_text.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/location_controller.dart';
+
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
@@ -281,8 +283,13 @@ class CartPage extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           if (Get.find<AuthController>().userLoggedIn()) {
-                            print("tapped");
-                            cartController.addToHistory();
+                            //print("tapped");
+                           // cartController.addToHistory();
+                            if (Get.find<LocationController>().addressList.isEmpty) {
+                              Get.toNamed(RouteHelper.getAddressPage());
+                            }else{
+                              Get.offNamed(RouteHelper.getInitial());
+                            }
                           } else {
                             Get.toNamed(RouteHelper.getSignInPage());
                           }

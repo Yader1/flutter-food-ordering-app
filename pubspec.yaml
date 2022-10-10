@@ -33,6 +33,11 @@ dependencies:
   get: ^4.1.4
   shared_preferences: ^2.0.15
   intl: ^0.17.0
+  google_maps_flutter: ^2.2.0
+  geocoding: ^2.0.4
+  geolocator: ^8.2.0
+  permission_handler: ^9.2.0
+  http: ^0.13.5
   
   #Usar esta libreria si desea darle un disenio diferente al menu inferior
   #persistent_bottom_nav_bar: ^4.0.2
