@@ -12,6 +12,8 @@ import 'package:flutter_tienda_comida/widgets/app_icon.dart';
 import 'package:flutter_tienda_comida/widgets/big_text.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/location_controller.dart';
+
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
 
@@ -98,16 +100,41 @@ class AccountPage extends StatelessWidget {
                               height: Dimenciones.height20,
                             ),
                             //address
-                            AccountWidget(
-                              appIcon: AppIcon(
-                                icon: Icons.location_pin,
-                                backgroundColor: AppColors.yellowColor,
-                                iconColor: Colors.white,
-                                iconSize: Dimenciones.height10 * 5 / 2,
-                                size: Dimenciones.height10 * 5,
-                              ),
-                              bigText: BigText(text: "Fill in your address"),
-                            ),
+                            GetBuilder<LocationController>(builder: (locationController){
+                              if (_userLoggedIn && locationController.addressList.isEmpty){
+                                return GestureDetector(
+                                  onTap: (){
+                                    Get.offNamed(RouteHelper.getAddressPage());
+                                  },
+                                  child: AccountWidget(
+                                    appIcon: AppIcon(
+                                      icon: Icons.location_pin,
+                                      backgroundColor: AppColors.yellowColor,
+                                      iconColor: Colors.white,
+                                      iconSize: Dimenciones.height10 * 5 / 2,
+                                      size: Dimenciones.height10 * 5,
+                                    ),
+                                    bigText: BigText(text: "Fill in your address"),
+                                  ),
+                                );
+                              } else {
+                                return GestureDetector(
+                                  onTap: (){
+                                    Get.offNamed(RouteHelper.getAddressPage());
+                                  },
+                                  child: AccountWidget(
+                                    appIcon: AppIcon(
+                                      icon: Icons.location_pin,
+                                      backgroundColor: AppColors.yellowColor,
+                                      iconColor: Colors.white,
+                                      iconSize: Dimenciones.height10 * 5 / 2,
+                                      size: Dimenciones.height10 * 5,
+                                    ),
+                                    bigText: BigText(text: "Your address"),
+                                  ),
+                                );
+                              }
+                            }),
                             SizedBox(
                               height: Dimenciones.height20,
                             ),
