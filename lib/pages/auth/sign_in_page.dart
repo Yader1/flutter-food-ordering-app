@@ -26,7 +26,7 @@ class SignInPage extends StatelessWidget {
 
       if (phone.isEmpty) {
         showCustomSnackBar("Type in phone address", title: "Phone address");
-      } else if (!GetUtils.isPhoneNumber(phone)) {
+      } else if (!GetUtils.isNum(phone)) {
         showCustomSnackBar("Type in a valid phone address",
             title: "Valid phone address");
       } else if (password.isEmpty) {
@@ -94,8 +94,8 @@ class SignInPage extends StatelessWidget {
                 //Email
                 AppTextField(
                     textEditingController: phoneController,
-                    hintText: "Email",
-                    icon: Icons.email_outlined),
+                    hintText: "Phone",
+                    icon: Icons.phone_iphone),
                 SizedBox(
                   height: Dimenciones.height20,
                 ),
