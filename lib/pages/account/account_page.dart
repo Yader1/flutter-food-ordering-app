@@ -4,7 +4,6 @@ import 'package:flutter_tienda_comida/controllers/auth_controller.dart';
 import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
 import 'package:flutter_tienda_comida/controllers/user_controller.dart';
 import 'package:flutter_tienda_comida/routes/route_helper.dart';
-import 'package:flutter_tienda_comida/utils/app_constants.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
 import 'package:flutter_tienda_comida/utils/dimensiones.dart';
 import 'package:flutter_tienda_comida/widgets/account_widget.dart';
@@ -27,7 +26,7 @@ class AccountPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.mainColor,
         title: BigText(
-          text: "Profile",
+          text: "Perfil",
           size: 24.0,
           color: Colors.white,
         ),
@@ -114,7 +113,7 @@ class AccountPage extends StatelessWidget {
                                       iconSize: Dimenciones.height10 * 5 / 2,
                                       size: Dimenciones.height10 * 5,
                                     ),
-                                    bigText: BigText(text: "Fill in your address"),
+                                    bigText: BigText(text: "Completa tu dirección"),
                                   ),
                                 );
                               } else {
@@ -130,7 +129,7 @@ class AccountPage extends StatelessWidget {
                                       iconSize: Dimenciones.height10 * 5 / 2,
                                       size: Dimenciones.height10 * 5,
                                     ),
-                                    bigText: BigText(text: "Your address"),
+                                    bigText: BigText(text: "Su dirección"),
                                   ),
                                 );
                               }
@@ -147,7 +146,7 @@ class AccountPage extends StatelessWidget {
                                 iconSize: Dimenciones.height10 * 5 / 2,
                                 size: Dimenciones.height10 * 5,
                               ),
-                              bigText: BigText(text: "Messages"),
+                              bigText: BigText(text: "Mensajes"),
                             ),
                             SizedBox(
                               height: Dimenciones.height20,
@@ -170,7 +169,7 @@ class AccountPage extends StatelessWidget {
                                   iconSize: Dimenciones.height10 * 5 / 2,
                                   size: Dimenciones.height10 * 5,
                                 ),
-                                bigText: BigText(text: "Logout"),
+                                bigText: BigText(text: "Cerrar sesión"),
                               ),
                             ),
                             SizedBox(
@@ -198,7 +197,7 @@ class AccountPage extends StatelessWidget {
                               BorderRadius.circular(Dimenciones.radius20),
                           image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: AssetImage("assets/image/sign_user.png"),
+                            image: AssetImage("assets/image/sign_user.svg"),
                           )),
                     ),
                     GestureDetector(
@@ -218,7 +217,7 @@ class AccountPage extends StatelessWidget {
                           ),
                           child: Center(
                             child: BigText(
-                              text: "Sign in",
+                              text: "Iniciar sesión",
                               color: Colors.white,
                               size: Dimenciones.font26,
                             ),

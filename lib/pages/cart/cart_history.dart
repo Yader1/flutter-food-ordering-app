@@ -68,7 +68,7 @@ class CartHistory extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              BigText(text: "Cart History", color: Colors.white),
+              BigText(text: "Historial del carrito", color: Colors.white),
               AppIcon(
                 icon: Icons.shopping_cart_outlined,
                 iconColor: AppColors.mainColor,
@@ -160,7 +160,7 @@ class CartHistory extends StatelessWidget {
                                                 BigText(
                                                   text: itemsPerOrder[i]
                                                           .toString() +
-                                                      " Items",
+                                                      "Elementos",
                                                   color: AppColors.titleColor,
                                                 ),
                                                 GestureDetector(
@@ -213,7 +213,7 @@ class CartHistory extends StatelessWidget {
                                                               .mainColor),
                                                     ),
                                                     child: SmallText(
-                                                      text: "One more",
+                                                      text: "Uno mas",
                                                       color:
                                                           AppColors.mainColor,
                                                     ),
@@ -234,8 +234,8 @@ class CartHistory extends StatelessWidget {
                   height: MediaQuery.of(context).size.height / 1.5,
                   child: const Center(
                     child: NoDataPage(
-                      text: "You didn't buy anything so far !",
-                      imgPath: "assets/image/no_data.png",
+                      text: "¡Hasta ahora no has comprado nada!",
+                      imgPath: "assets/image/no_data.svg",
                     ),
                   ),
                 );

@@ -38,6 +38,7 @@ dependencies:
   geolocator: ^8.2.0
   permission_handler: ^9.2.0
   http: ^0.13.5
+  flutter_svg: ^1.1.6
   
   #Usar esta libreria si desea darle un disenio diferente al menu inferior
   #persistent_bottom_nav_bar: ^4.0.2

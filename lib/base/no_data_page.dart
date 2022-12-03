@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class NoDataPage extends StatelessWidget {
   final String text;
   final String imgPath;
 
-  const NoDataPage({super.key, required this.text, this.imgPath="assets/image/empty_cart.png"});
+  const NoDataPage({super.key, required this.text, this.imgPath="assets/image/no_data.svg"});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,14 @@ class NoDataPage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        /*
         Image.asset(
+          imgPath,
+          height: MediaQuery.of(context).size.height*0.22,
+          width: MediaQuery.of(context).size.width*0.22,
+        ),
+        */
+        SvgPicture.asset(
           imgPath,
           height: MediaQuery.of(context).size.height*0.22,
           width: MediaQuery.of(context).size.width*0.22,

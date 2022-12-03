@@ -25,15 +25,15 @@ class SignInPage extends StatelessWidget {
       String phone = phoneController.text.trim();
 
       if (phone.isEmpty) {
-        showCustomSnackBar("Type in phone address", title: "Phone address");
+        showCustomSnackBar("Escriba la dirección del teléfono", title: "Dirección de teléfono");
       } else if (!GetUtils.isNum(phone)) {
-        showCustomSnackBar("Type in a valid phone address",
-            title: "Valid phone address");
+        showCustomSnackBar("Escriba una dirección de teléfono válida",
+            title: "Dirección de teléfono válida");
       } else if (password.isEmpty) {
-        showCustomSnackBar("Type in your password", title: "Password");
+        showCustomSnackBar("Escriba su contraseña", title: "Clave");
       } else if (password.length < 6) {
-        showCustomSnackBar("Password can not be less than six characters",
-            title: "Password");
+        showCustomSnackBar("La contraseña no puede tener menos de seis caracteres",
+            title: "Clave");
       } else {
         authController.login(phone, password).then((status) {
           if (status.isSuccess) {
@@ -72,7 +72,7 @@ class SignInPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Hello",
+                        "Hola",
                         style: TextStyle(
                           fontSize:
                               Dimenciones.font20 * 3 + Dimenciones.font20 / 2,
@@ -80,7 +80,7 @@ class SignInPage extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "Sign into your account",
+                        "Iniciar sesión en su cuenta",
                         style: TextStyle(
                             fontSize: Dimenciones.font20,
                             color: Colors.grey[500]),
@@ -94,7 +94,7 @@ class SignInPage extends StatelessWidget {
                 //Email
                 AppTextField(
                     textEditingController: phoneController,
-                    hintText: "Phone",
+                    hintText: "Teléfono",
                     icon: Icons.phone_iphone),
                 SizedBox(
                   height: Dimenciones.height20,
@@ -102,7 +102,7 @@ class SignInPage extends StatelessWidget {
                 //Password
                 AppTextField(
                   textEditingController: passwordController,
-                  hintText: "Password",
+                  hintText: "Contraseña",
                   isObscure: true,
                   icon: Icons.password_rounded,
                 ),
@@ -115,7 +115,7 @@ class SignInPage extends StatelessWidget {
                     Expanded(child: Container()),
                     RichText(
                         text: TextSpan(
-                            text: "Sing into your account",
+                            text: "Iniciar sesión en su cuenta",
                             style: TextStyle(
                               color: Colors.grey[500],
                               fontSize: Dimenciones.font20,
@@ -143,7 +143,7 @@ class SignInPage extends StatelessWidget {
                         color: AppColors.mainColor),
                     child: Center(
                       child: BigText(
-                        text: "Sign in",
+                        text: "Iniciar sesión",
                         color: Colors.white,
                         size: Dimenciones.font20 + Dimenciones.font20 / 2,
                       ),
@@ -156,7 +156,7 @@ class SignInPage extends StatelessWidget {
                 //Opciones de crear una cuenta
                 RichText(
                     text: TextSpan(
-                        text: "Don\'t an account?",
+                        text: "¿No tienes una cuenta?",
                         style: TextStyle(
                           color: Colors.grey[500],
                           fontSize: Dimenciones.font20,
@@ -166,7 +166,7 @@ class SignInPage extends StatelessWidget {
                           recognizer: TapGestureRecognizer()
                             ..onTap = () => Get.to(() => SignUpPage(),
                                 transition: Transition.fade),
-                          text: " Create",
+                          text: " Crear",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: AppColors.mainBlackColor,

@@ -24,6 +24,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
+        onRefresh: _loadResource,
         child: Column(children: [
           //Showing the header
           Container(
@@ -39,13 +40,13 @@ class _MainFoodPageState extends State<MainFoodPage> {
                   Column(
                     children: [
                       BigText(
-                        text: "Bengladesh",
+                        text: "Nicaragua",
                         color: AppColors.mainColor,
                       ), //Pais
                       //Hacer un tipo lista del departamento
                       Row(
                         children: [
-                          SmallText(text: "Narsingdi", color: Colors.black54),
+                          SmallText(text: "Bilwi", color: Colors.black54),
                           Icon(Icons.arrow_drop_down_circle_rounded)
                         ],
                       )
@@ -55,6 +56,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
                       child: Container(
                     width: Dimenciones.height45,
                     height: Dimenciones.height45,
+                    // ignore: sort_child_properties_last
                     child: Icon(
                       Icons.search,
                       color: Colors.white,
@@ -74,7 +76,6 @@ class _MainFoodPageState extends State<MainFoodPage> {
               child: SingleChildScrollView(
             child: FoodPageBody(),
           ))
-        ]),
-        onRefresh: _loadResource);
+        ]));
   }
 }

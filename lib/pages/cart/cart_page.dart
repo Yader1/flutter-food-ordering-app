@@ -4,7 +4,6 @@ import 'package:flutter_tienda_comida/controllers/auth_controller.dart';
 import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
 import 'package:flutter_tienda_comida/controllers/popular_product_controller.dart';
 import 'package:flutter_tienda_comida/controllers/recommended_product_controller.dart';
-import 'package:flutter_tienda_comida/pages/home/main_food_page.dart';
 import 'package:flutter_tienda_comida/routes/route_helper.dart';
 import 'package:flutter_tienda_comida/utils/app_constants.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
@@ -105,8 +104,8 @@ class CartPage extends StatelessWidget {
                                                   .indexOf(_cartList[index]
                                                       .product!);
                                               if (recommendedIndex < 0) {
-                                                Get.snackbar("History product",
-                                                    "Product review is not avaible for history products",
+                                                Get.snackbar("Historial de productos",
+                                                    "La revisión del producto no está disponible para los productos de historial",
                                                     backgroundColor:
                                                         AppColors.mainColor,
                                                     colorText: Colors.white);
@@ -154,7 +153,7 @@ class CartPage extends StatelessWidget {
                                                     .getItems[index].name!,
                                                 color: Colors.black54,
                                               ),
-                                              SmallText(text: "Spicy"),
+                                              SmallText(text: "Picante"),
                                               Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
@@ -238,7 +237,7 @@ class CartPage extends StatelessWidget {
                         ),
                       ),
                     ))
-                : NoDataPage(text: "Your cart is empty!");
+                : NoDataPage(text: "¡Tu carrito esta vacío!");
           })
         ],
       ),
@@ -301,7 +300,7 @@ class CartPage extends StatelessWidget {
                               left: Dimenciones.width20,
                               right: Dimenciones.width20),
                           child: BigText(
-                            text: "Check out",
+                            text: "Verificar",
                             color: Colors.white,
                           ),
                           decoration: BoxDecoration(

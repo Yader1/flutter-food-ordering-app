@@ -35,19 +35,19 @@ class SignUpPage extends StatelessWidget {
       String email = emailController.text.trim();
 
       if (name.isEmpty) {
-        showCustomSnackBar("Type in your name", title: "Name");
+        showCustomSnackBar("Escriba su nombre", title: "Nombre");
       } else if (phone.isEmpty) {
-        showCustomSnackBar("Type in your phone number", title: "Phone number");
+        showCustomSnackBar("Escriba su número de teléfono", title: "Número de teléfono");
       } else if (email.isEmpty) {
-        showCustomSnackBar("Type in email address", title: "Email address");
+        showCustomSnackBar("Escriba la dirección de correo electrónico", title: "Dirección de correo electrónico");
       } else if (!GetUtils.isEmail(email)) {
-        showCustomSnackBar("Type in a valid email address",
-            title: "Valid email address");
+        showCustomSnackBar("Escriba una dirección de correo electrónico válida",
+            title: "Dirección de email válida");
       } else if (password.isEmpty) {
-        showCustomSnackBar("Type in your password", title: "Password");
+        showCustomSnackBar("Escriba su contraseña", title: "contraseña");
       } else if (password.length < 6) {
-        showCustomSnackBar("Password can not be less than six characters",
-            title: "Password");
+        showCustomSnackBar("La contraseña no puede tener menos de seis caracteres",
+            title: "contraseña");
       } else {
         SignUpBody signUpBody = SignUpBody(
             name: name, phone: phone, email: email, password: password);
@@ -85,7 +85,7 @@ class SignUpPage extends StatelessWidget {
                 //Email
                 AppTextField(
                     textEditingController: emailController,
-                    hintText: "Email",
+                    hintText: "Correo electrónico",
                     icon: Icons.email_outlined),
                 SizedBox(
                   height: Dimenciones.height20,
@@ -93,7 +93,7 @@ class SignUpPage extends StatelessWidget {
                 //Password
                 AppTextField(
                   textEditingController: passwordController,
-                  hintText: "Password",
+                  hintText: "Contraseña",
                   icon: Icons.password_rounded,
                   isObscure: true,
                 ),
@@ -103,7 +103,7 @@ class SignUpPage extends StatelessWidget {
                 //Name
                 AppTextField(
                     textEditingController: nameController,
-                    hintText: "Name",
+                    hintText: "Nombre",
                     icon: Icons.person),
                 SizedBox(
                   height: Dimenciones.height20,
@@ -111,7 +111,7 @@ class SignUpPage extends StatelessWidget {
                 //Phone
                 AppTextField(
                     textEditingController: phoneController,
-                    hintText: "Phone",
+                    hintText: "Teléfono",
                     icon: Icons.phone_android),
                 SizedBox(
                   height: Dimenciones.height20,
@@ -131,7 +131,7 @@ class SignUpPage extends StatelessWidget {
                         color: AppColors.mainColor),
                     child: Center(
                       child: BigText(
-                        text: "Sign up",
+                        text: "Inscribirse",
                         color: Colors.white,
                         size: Dimenciones.font20 + Dimenciones.font20 / 2,
                       ),
@@ -147,7 +147,7 @@ class SignUpPage extends StatelessWidget {
                     text: TextSpan(
                         recognizer: TapGestureRecognizer()
                           ..onTap = () => Get.back(),
-                        text: "Have an account already?",
+                        text: "¿Ya tienes una cuenta?",
                         style: TextStyle(
                           color: Colors.grey[500],
                           fontSize: Dimenciones.font20,
@@ -159,7 +159,7 @@ class SignUpPage extends StatelessWidget {
                 //Opciones de crear una cuenta
                 RichText(
                     text: TextSpan(
-                        text: "Sign up using one of the following methods",
+                        text: "Regístrese usando uno de los siguientes métodos",
                         style: TextStyle(
                           color: Colors.grey[500],
                           fontSize: Dimenciones.font16,

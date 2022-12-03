@@ -9,7 +9,6 @@ import '../../models/address_model.dart';
 import '../../routes/route_helper.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimensiones.dart';
-import '../../widgets/app_icon.dart';
 import '../../widgets/app_text_field.dart';
 import '../../widgets/big_text.dart';
 
@@ -58,7 +57,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Address page"),
+          title: const Text("página de dirección"),
           backgroundColor: AppColors.mainColor,
         ),
         body: GetBuilder<UserController>(builder: (userController) {
@@ -149,32 +148,32 @@ class _AddAddressPageState extends State<AddAddressPage> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: Dimenciones.width20),
-                    child: BigText(text: "Delivery address"),
+                    child: BigText(text: "Dirección de entrega"),
                   ),
                   SizedBox(height: Dimenciones.height10),
                   AppTextField(
                       textEditingController: _addressController,
-                      hintText: "Your address",
+                      hintText: "Su dirección",
                       icon: Icons.map),
                   SizedBox(height: Dimenciones.height20),
                   Padding(
                     padding: EdgeInsets.only(left: Dimenciones.width20),
-                    child: BigText(text: "Contact name"),
+                    child: BigText(text: "Nombre de contacto"),
                   ),
                   SizedBox(height: Dimenciones.height10),
                   AppTextField(
                       textEditingController: _contactPersonNameController,
-                      hintText: "Your name",
+                      hintText: "Tu nombre",
                       icon: Icons.person_pin),
                   SizedBox(height: Dimenciones.height20),
                   Padding(
                     padding: EdgeInsets.only(left: Dimenciones.width20),
-                    child: BigText(text: "Your number"),
+                    child: BigText(text: "Tu número"),
                   ),
                   SizedBox(height: Dimenciones.height10),
                   AppTextField(
                       textEditingController: _contactPersonNumberController,
-                      hintText: "Your number",
+                      hintText: "Tu número",
                       icon: Icons.phone_iphone_rounded),
                 ],
               ),
@@ -212,9 +211,9 @@ class _AddAddressPageState extends State<AddAddressPage> {
                         locationController.addAddress(_addressModel).then((response){
                           if (response.isSuccess) {
                             Get.toNamed(RouteHelper.getInitial());
-                            Get.snackbar("Address", "Added Successfully");
+                            Get.snackbar("Dirección", "Agregado exitosamente");
                           } else {
-                            Get.snackbar("Address", "Couldn't save address");
+                            Get.snackbar("Dirección", "No se pudo guardar la dirección");
                           }
                         });
                       },
@@ -225,7 +224,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
                             left: Dimenciones.width20,
                             right: Dimenciones.width20),
                         child: BigText(
-                          text: "Save address",
+                          text: "Guardar dirección",
                           color: Colors.white,
                           size: 26,
                         ),

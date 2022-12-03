@@ -54,8 +54,8 @@ class PopularProductController extends GetxController {
     if ((_inCartItems + quantity) < 0) {
       //Mensaje para el usuario
       Get.snackbar(
-        "Item count",
-        "You can't reduce more!",
+        "Recuento de elementos",
+        "¡No se puede reducir más!",
         backgroundColor: AppColors.mainColor,
         colorText: Colors.white,
       );
@@ -67,8 +67,8 @@ class PopularProductController extends GetxController {
     } else if ((_inCartItems + quantity) > 20) {
       //Mensaje para el usuario
       Get.snackbar(
-        "Item count",
-        "You can't add more!",
+        "Recuento de elementos",
+        "¡No puedes agregar más!",
         backgroundColor: AppColors.mainColor,
         colorText: Colors.white,
       );

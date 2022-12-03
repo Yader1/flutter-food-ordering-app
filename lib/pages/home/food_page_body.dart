@@ -106,7 +106,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               ),
               Container(
                 margin: const EdgeInsets.only(bottom: 2),
-                child: SmallText(text: "Food Pairing"),
+                child: SmallText(text: "Comidas sabrosas"),
               )
             ],
           ),
@@ -175,7 +175,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                               .name!),
                                       SizedBox(height: Dimenciones.height10),
                                       SmallText(
-                                          text: "With chinese characteristics"),
+                                          text: "Con características chinas"),
                                       SizedBox(height: Dimenciones.height10),
                                       Row(
                                         mainAxisAlignment:

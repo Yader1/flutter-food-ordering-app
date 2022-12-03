@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
 import 'package:flutter_tienda_comida/controllers/popular_product_controller.dart';
-import 'package:flutter_tienda_comida/pages/cart/cart_page.dart';
 import 'package:flutter_tienda_comida/routes/route_helper.dart';
 import 'package:flutter_tienda_comida/utils/app_constants.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
@@ -124,7 +123,7 @@ class PopularFoodDetalle extends StatelessWidget {
                     SizedBox(
                       height: Dimenciones.height20,
                     ),
-                    BigText(text: "Introduce"),
+                    BigText(text: "Introducir"),
                     SizedBox(
                       height: Dimenciones.height20,
                     ),
@@ -195,7 +194,7 @@ class PopularFoodDetalle extends StatelessWidget {
                     left: Dimenciones.width20,
                     right: Dimenciones.width20),
                 child: BigText(
-                  text: "\$ ${product.price!} | Add to cart",
+                  text: "\$ ${product.price!} | Añadir a la cesta",
                   color: Colors.white,
                 ),
                 decoration: BoxDecoration(
