@@ -15,7 +15,7 @@
         <!--android:networkSecurityConfig="@xml/network_security_config"-->
         <!-- TODO: Add your API key here -->
        <meta-data android:name="com.google.android.geo.API_KEY"
-           android:value="AIzaSyDHNAD-D3bhFiewYghcbRNzYYstQDiAucI"/>
+           android:value="AIzaSyDR2dLFIA_NCk6TvLoBK-9gctNYC-sWUKQ"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

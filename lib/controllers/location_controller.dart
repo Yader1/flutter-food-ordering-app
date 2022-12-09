@@ -40,6 +40,16 @@ class LocationController extends GetxController implements GetxService {
   Placemark get placemark => _placemark;
   Placemark get pickPlacemark => _pickPlacemark;
 
+  //Para zona de servicio
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
+  //Si el usuario está en la zona de servicio o no
+  bool _inZone = false;
+  bool get inZone => _inZone;
+  //Mostrar y ocultar el botón mientras se carga el mapa
+  bool _buttonDisabled = true;
+  bool get buttonDisabled => _buttonDisabled;
+
   void setMapController(GoogleMapController mapController) {
     _mapController = mapController;
   }
@@ -73,7 +83,9 @@ class LocationController extends GetxController implements GetxService {
             speed: 1,
           );
         }
-
+        ResponseModel _responseModel = await getZone(position.target.latitude.toString(), position.target.longitude.toString(), false);
+        //si el valor del botón es falso estamos en el área de servicio
+        _buttonDisabled =! _responseModel.isSuccess;
         if (_changeAddress) {
           String _address = await getAddressfromGeocode(
               LatLng(position.target.latitude, position.target.longitude));
@@ -85,11 +97,15 @@ class LocationController extends GetxController implements GetxService {
       } catch (e) {
         print(e);
       }
+      _loading = false;
+      update();
+    }else{
+      _updateAddressData = true;
     }
   }
 
   Future<String> getAddressfromGeocode(LatLng latLng) async {
-    String _address = "Unknown Location Found";
+    String _address = "Ubicación desconocida encontrada";
     Response response = await locationRepo.getAddressfromGeocode(latLng);
 
     if (response.body["status"] == 'OK') {
@@ -164,5 +180,48 @@ class LocationController extends GetxController implements GetxService {
   Future<bool> saveUserAddress(AddressModel addressModel) async {
     String userAddress = jsonEncode(addressModel.toJson());
     return await locationRepo.saveUserAddress(userAddress);
+  }
+
+  void clearAddressList(){
+    _addressList = [];
+    _allAddressList = [];
+    update();
+  }
+
+  String getUserAddressFromLocalStorage(){
+    return locationRepo.getUserAddress();
+  }
+
+  void setAddAddressData(){
+    _position = _pickPosition;
+    _placemark = _pickPlacemark;
+    _updateAddressData = false;
+    update();
+  }
+
+  Future<ResponseModel> getZone(String lat, String lng, bool markerLoad) async {
+    late ResponseModel _responseModel;
+    if(markerLoad){
+      _loading = true;
+    }else{
+      _isLoading = true;
+    }
+    update();
+    Response response = await locationRepo.getZone(lat, lng);
+    if(response.statusCode == 200){
+      _inZone = true;
+      _responseModel = ResponseModel(true, response.body["zone_id"].toString());
+    }else{
+      _inZone = false;
+      _responseModel = ResponseModel(true, response.statusText!);
+    }
+    if(markerLoad){
+      _loading = false;
+    }else{
+      _isLoading = false;
+    }
+    //print("Zone response code is "+response.statusCode.toString());
+    update();
+    return _responseModel;
   }
 }

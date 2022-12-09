@@ -3,6 +3,7 @@ import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
 import 'package:flutter_tienda_comida/controllers/popular_product_controller.dart';
 import 'package:flutter_tienda_comida/controllers/recommended_product_controller.dart';
 import 'package:flutter_tienda_comida/routes/route_helper.dart';
+import 'package:flutter_tienda_comida/utils/colors.dart';
 import 'package:get/get.dart';
 import 'helper/dependencies.dart' as dep;
 
@@ -27,6 +28,10 @@ class MyApp extends StatelessWidget {
           //home: SignInPage(),
           initialRoute: RouteHelper.getSplashPage(),
           getPages: RouteHelper.routes,
+          theme: ThemeData(
+            primaryColor: AppColors.mainColor,
+            //fontFamily: ""
+          ),
         );
       });
     });

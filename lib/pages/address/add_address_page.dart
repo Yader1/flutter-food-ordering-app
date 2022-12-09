@@ -1,3 +1,4 @@
+import 'package:flutter_tienda_comida/pages/address/pick_address_map.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +41,14 @@ class _AddAddressPageState extends State<AddAddressPage> {
     }
 
     if (Get.find<LocationController>().addressList.isNotEmpty) {
+      /*
+
+      */
+      if(Get.find<LocationController>().getUserAddressFromLocalStorage() == ""){
+        Get.find<LocationController>().saveUserAddress(
+          Get.find<LocationController>().addressList.last
+        );
+      }
       Get.find<LocationController>().getUserAddress();
       _cameraPosition = CameraPosition(
           target: LatLng(
@@ -48,7 +57,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
               double.parse(
                   Get.find<LocationController>().getAddress["longitude"])));
       _initialPosition = LatLng(
-          double.parse(Get.find<LocationController>().getAddress["latitude"]),
+          double.parse(Get.find<LocationController>().getAddress["latitude"]),  
           double.parse(Get.find<LocationController>().getAddress["longitude"]));
     }
   }
@@ -96,6 +105,15 @@ class _AddAddressPageState extends State<AddAddressPage> {
                         GoogleMap(
                           initialCameraPosition:
                               CameraPosition(target: _initialPosition, zoom: 17),
+                              onTap: (latlng) {
+                                Get.toNamed(RouteHelper.getPickAddressPage(),
+                                  arguments: PickAddressMap(
+                                    fromSignup: false,
+                                    fromAddress: true,
+                                    googleMapController: locationController.mapController,
+                                  )
+                                );
+                              },
                           zoomControlsEnabled: false,
                           compassEnabled: false,
                           indoorViewEnabled: true,
@@ -109,6 +127,10 @@ class _AddAddressPageState extends State<AddAddressPage> {
                               _cameraPosition = position),
                           onMapCreated: (GoogleMapController controller) {
                             locationController.setMapController(controller);
+
+                            if(Get.find<LocationController>().addressList.isEmpty){
+
+                            }
                           },
                         )
                       ],

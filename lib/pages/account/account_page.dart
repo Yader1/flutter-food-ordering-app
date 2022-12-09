@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tienda_comida/base/custom_loader.dart';
+import 'package:flutter_tienda_comida/base/no_data_page.dart';
 import 'package:flutter_tienda_comida/controllers/auth_controller.dart';
 import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
 import 'package:flutter_tienda_comida/controllers/user_controller.dart';
@@ -158,6 +159,7 @@ class AccountPage extends StatelessWidget {
                                   Get.find<AuthController>().clearSharedData();
                                   Get.find<CartController>().clear();
                                   Get.find<CartController>().clearCartHistory();
+                                  Get.find<LocationController>().clearAddressList();
                                   Get.offNamed(RouteHelper.getSignInPage());
                                 } else {}
                               },
@@ -186,19 +188,9 @@ class AccountPage extends StatelessWidget {
                     child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      width: double.maxFinite,
-                      height: Dimenciones.height45 * 8,
-                      margin: EdgeInsets.only(
-                          left: Dimenciones.width10,
-                          right: Dimenciones.width10),
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular(Dimenciones.radius20),
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage("assets/image/sign_user.svg"),
-                          )),
+                    NoDataPage(
+                      text: "",
+                      imgPath: "assets/image/sign_user.svg",
                     ),
                     GestureDetector(
                       onTap: () {
