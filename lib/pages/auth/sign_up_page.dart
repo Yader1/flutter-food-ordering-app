@@ -67,19 +67,19 @@ class SignUpPage extends StatelessWidget {
         backgroundColor: Colors.white,
         body: GetBuilder<AuthController>(builder: (_authController) {
           return !_authController.isLoading ? SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
                 SizedBox(
                   height: Dimenciones.screenHeight * 0.05,
                 ),
-                Container(
+                SizedBox(
                     height: Dimenciones.screenHeight * 0.25,
-                    child: Center(
+                    child: const Center(
                       child: CircleAvatar(
                         backgroundColor: Colors.white,
                         radius: 80.0,
-                        backgroundImage: AssetImage("assets/image/logo.jpeg"),
+                        backgroundImage: AssetImage("assets/image/logo.png"),
                       ),
                     )),
                 //Email
@@ -173,7 +173,7 @@ class SignUpPage extends StatelessWidget {
                             backgroundColor: Colors.white,
                             radius: Dimenciones.radius30,
                             backgroundImage: AssetImage(
-                                "assets/image/" + singUpImages[index]),
+                                "assets/image/${singUpImages[index]}"),
                           ))),
                 )
               ],

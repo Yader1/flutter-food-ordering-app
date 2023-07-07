@@ -14,7 +14,7 @@ import 'package:flutter_tienda_comida/widgets/small_text.dart';
 import 'package:get/get.dart';
 
 class FoodPageBody extends StatefulWidget {
-  FoodPageBody({Key? key}) : super(key: key);
+  const FoodPageBody({Key? key}) : super(key: key);
 
   @override
   State<FoodPageBody> createState() => _FoodPageBodyState();
@@ -49,7 +49,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         //Seccion Slider
         GetBuilder<PopularProductController>(builder: (popularProducts) {
           return popularProducts.isLoaded
-              ? Container(
+              ? SizedBox(
                   height: Dimenciones.pageView,
                   child: PageView.builder(
                       controller: pageController,
@@ -83,7 +83,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         }),
         //Populares
         SizedBox(
-          height: Dimenciones.height30,
+          height: Dimenciones.height20,
         ),
         Container(
           margin: EdgeInsets.only(left: Dimenciones.width30),
@@ -92,7 +92,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             children: [
               BigText(text: "Recomendados"),
               SizedBox(
-                width: Dimenciones.width10,
+                width: Dimenciones.width10/1.2,
               ),
               Container(
                 margin: const EdgeInsets.only(bottom: 3),
@@ -116,7 +116,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         GetBuilder<RecommendedProductController>(builder: (recommendedProduct) {
           return recommendedProduct.isLoaded
               ? ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: recommendedProduct.recommendedProductList.length,
                   itemBuilder: (context, index) {
@@ -136,6 +136,13 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                               width: Dimenciones.listViewImgSize,
                               height: Dimenciones.listViewImgSize,
                               decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: AppColors.mainColor.withOpacity(0.2),
+                                    blurRadius: 10.0,
+                                    offset: const Offset(4, 8)
+                                  )
+                                ],
                                 borderRadius:
                                     BorderRadius.circular(Dimenciones.radius20),
                                 color: Colors.white38,
@@ -153,11 +160,16 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                 child: Container(
                               height: Dimenciones.listViewTextContSize,
                               decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: AppColors.mainColor.withOpacity(0.2),
+                                      blurRadius: 10.0,
+                                      offset: const Offset(4, 8)
+                                    )
+                                  ],
                                   borderRadius: BorderRadius.only(
-                                    topRight:
-                                        Radius.circular(Dimenciones.radius20),
-                                    bottomRight:
-                                        Radius.circular(Dimenciones.radius20),
+                                    topRight: Radius.circular(Dimenciones.radius20),
+                                    bottomRight: Radius.circular(Dimenciones.radius20),
                                   ),
                                   color: Colors.white),
                               child: Padding(
@@ -169,13 +181,12 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                         CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      BigText(
-                                          text: recommendedProduct
-                                              .recommendedProductList[index]
-                                              .name!),
+                                      BigText(text: recommendedProduct.recommendedProductList[index].name!),
                                       SizedBox(height: Dimenciones.height10),
-                                      SmallText(
-                                          text: "Con características chinas"),
+                                      SizedBox(
+                                        height: Dimenciones.height10,
+                                        child: SmallText(text: recommendedProduct.recommendedProductList[index].description!)
+                                        ),
                                       SizedBox(height: Dimenciones.height10),
                                       Row(
                                         mainAxisAlignment:
@@ -272,7 +283,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimenciones.radius20),
                   color: Colors.white,
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       color: Color(0xFFe8e8e8),
                       blurRadius: 5.0,
