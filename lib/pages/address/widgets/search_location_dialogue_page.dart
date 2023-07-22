@@ -44,8 +44,9 @@ class LocationDialogue extends StatelessWidget {
                 )
               )
             ),
-            onSuggestionSelected: (suggestion){
-
+            onSuggestionSelected: (Prediction suggestion) {
+              Get.find<LocationController>().setLocation(suggestion.placeId!, suggestion.description!, mapController);
+              Get.back();
             },
             // As we type, it gives us suggestion
             suggestionsCallback: (pattern) async {

@@ -95,11 +95,12 @@ class LocationController extends GetxController implements GetxService {
         _buttonDisabled =! _responseModel.isSuccess;
         if (_changeAddress) {
           String _address = await getAddressfromGeocode(
-              LatLng(position.target.latitude, position.target.longitude));
+              LatLng(position.target.latitude, position.target.longitude)
+          );
 
-          fromAddress
-              ? _placemark = Placemark(name: _address)
-              : _pickPlacemark = Placemark(name: _address);
+          fromAddress ? _placemark = Placemark(name: _address) : _pickPlacemark = Placemark(name: _address);
+        } else {
+          _changeAddress = true;
         }
       } catch (e) {
         print(e);
@@ -245,5 +246,35 @@ class LocationController extends GetxController implements GetxService {
     }
 
     return _predictionList;
+  }
+
+  setLocation(String placeID, String address, GoogleMapController mapController) async {
+    _loading = true;
+    update();
+    PlacesDetailsResponse details;
+    Response response = await locationRepo.setLocation(placeID);
+    details = PlacesDetailsResponse.fromJson(response.body);
+    _pickPosition = Position(
+        longitude: details.result.geometry!.location.lng,
+        latitude: details.result.geometry!.location.lat,
+        timestamp: DateTime.now(),
+        accuracy: 1,
+        altitude: 1,
+        heading: 1,
+        speed: 1,
+        speedAccuracy: 1
+    );
+    _pickPlacemark = Placemark(name: address);
+    _changeAddress = false;
+    if(!mapController.isNull){
+      mapController.animateCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(target: LatLng(
+          details.result.geometry!.location.lat,
+          details.result.geometry!.location.lng
+        ), zoom: 17)
+      ));
+    }
+    _loading = false;
+    update();
   }
 }
