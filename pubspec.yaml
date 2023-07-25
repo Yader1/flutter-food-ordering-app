@@ -43,6 +43,7 @@ dependencies:
   flutter_google_places: ^0.3.0
   http: ^0.13.5
   flutter_svg: ^1.1.6
+  webview_flutter: ^2.0.9
   
   #Usar esta libreria si desea darle un disenio diferente al menu inferior
   #persistent_bottom_nav_bar: ^4.0.2

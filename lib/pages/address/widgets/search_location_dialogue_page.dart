@@ -12,7 +12,7 @@ class LocationDialogue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController _controller = TextEditingController();
+    TextEditingController _controller = TextEditingController();
     return Container(
       padding: EdgeInsets.all(Dimenciones.width10),
       alignment: Alignment.topCenter,

@@ -10,10 +10,13 @@ class AppConstants {
   static const String DRINKS_URI = "/api/v1/products/drinks"; //Nueva ruta creada en el admin Laravel
   static const String UPLOAD_URL = "/uploads/";
 
-  // U Auht end points
+  //URL Auht end points
   static const String REGISTRATION_URI = "/api/v1/auth/register";
   static const String LOGIN_URI = "/api/v1/auth/login";
   static const String USER_INFO_URI = "/api/v1/customer/info";
+
+  //URL Orders
+  static const String PLACE_ORDER_URI = "/api/v1/customer/order/place";
 
   //USERS
   static const String USER_ADDRESS = "user_address";
