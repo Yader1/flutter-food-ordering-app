@@ -22,6 +22,7 @@ class AccountPage extends StatelessWidget {
     bool _userLoggedIn = Get.find<AuthController>().userLoggedIn();
     if (_userLoggedIn) {
       Get.find<UserController>().getUserInfo();
+      Get.find<LocationController>().getAddressList();
     }
     return Scaffold(
       appBar: AppBar(
