@@ -245,15 +245,15 @@ class _AddAddressPageState extends State<AddAddressPage> {
                             bottom: Dimenciones.height20,
                             left: Dimenciones.width20,
                             right: Dimenciones.width20),
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.circular(Dimenciones.radius20),
+                            color: AppColors.mainColor),
                         child: BigText(
                           text: "Guardar dirección",
                           color: Colors.white,
                           size: 26,
                         ),
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.circular(Dimenciones.radius20),
-                            color: AppColors.mainColor),
                       ),
                     )
                   ]),

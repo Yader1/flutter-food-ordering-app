@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tienda_comida/base/custom_button.dart';
 import 'package:flutter_tienda_comida/controllers/location_controller.dart';
+import 'package:flutter_tienda_comida/pages/address/widgets/search_location_dialogue_page.dart';
 import 'package:flutter_tienda_comida/routes/route_helper.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
 import 'package:flutter_tienda_comida/utils/dimensiones.dart';
@@ -49,16 +50,17 @@ class _PickAddressMapState extends State<PickAddressMap> {
             width: double.maxFinite,
             child: Stack(
               children: [
-                GoogleMap(initialCameraPosition: CameraPosition(
-                  target: _initialPosition,zoom: 17
-                ),
-                zoomControlsEnabled: false,
-                onCameraMove: (CameraPosition cameraPosition){
-                  _cameraPosition = cameraPosition;
-                },
-                onCameraIdle:() {
-                  Get.find<LocationController>().updatePosition(_cameraPosition, false);
-                },
+                GoogleMap(initialCameraPosition: CameraPosition(target: _initialPosition,zoom: 17),
+                  zoomControlsEnabled: false,
+                  onCameraMove: (CameraPosition cameraPosition){
+                    _cameraPosition = cameraPosition;
+                  },
+                  onCameraIdle:() {Get.find<LocationController>().updatePosition(_cameraPosition, false);},
+                  onMapCreated: (GoogleMapController mapController){
+                    _mapController = mapController;
+                    //TODO: PEDIENTE A REVISAR
+                    if(!widget.fromAddress){}
+                  },
                 ),
                 Center(
                   child: !locationController.loading?Image.asset("assets/image/pick_marker.png",
@@ -66,30 +68,38 @@ class _PickAddressMapState extends State<PickAddressMap> {
                     width: 50.0,
                   ):const CircularProgressIndicator(),
                 ),
+                /*
+                  Showing and selecting address
+                 */
                 Positioned(
                   top: Dimenciones.height45,
                   left: Dimenciones.width20,
                   right: Dimenciones.width20,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: Dimenciones.width10),
-                    height: 50.0,
-                    decoration: BoxDecoration(
-                      color: AppColors.mainColor,
-                      borderRadius: BorderRadius.circular(Dimenciones.radius20/2),
-                    ),
-                    child: Row(
-                      children: [
-                        Icon(Icons.location_on, size: 25, color: AppColors.yellowColor),
-                        Expanded(child: Text(
-                          "${locationController.pickPlacemark.name??''}",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: Dimenciones.font16
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ))
-                      ],
+                  child: InkWell(
+                    onTap: ()=> Get.dialog(LocationDialogue(mapController: _mapController)),
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: Dimenciones.width10),
+                      height: 50.0,
+                      decoration: BoxDecoration(
+                        color: AppColors.mainColor,
+                        borderRadius: BorderRadius.circular(Dimenciones.radius20/2),
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(Icons.location_on, size: 25, color: AppColors.yellowColor),
+                          Expanded(child: Text(
+                            "${locationController.pickPlacemark.name??''}",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: Dimenciones.font16
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          )),
+                          SizedBox(width: Dimenciones.width10),
+                          Icon(Icons.search, size: 25.0, color: AppColors.yellowColor)
+                        ],
+                      ),
                     ),
                   ),
                 ),

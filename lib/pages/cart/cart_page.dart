@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tienda_comida/base/no_data_page.dart';
+import 'package:flutter_tienda_comida/base/show_custom_snackbar.dart';
 import 'package:flutter_tienda_comida/controllers/auth_controller.dart';
 import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
+import 'package:flutter_tienda_comida/controllers/order_controller.dart';
 import 'package:flutter_tienda_comida/controllers/popular_product_controller.dart';
 import 'package:flutter_tienda_comida/controllers/recommended_product_controller.dart';
+import 'package:flutter_tienda_comida/controllers/user_controller.dart';
+import 'package:flutter_tienda_comida/models/place_order_model.dart';
 import 'package:flutter_tienda_comida/routes/route_helper.dart';
 import 'package:flutter_tienda_comida/utils/app_constants.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
@@ -272,9 +276,7 @@ class CartPage extends StatelessWidget {
                         child: Row(
                           children: [
                             SizedBox(width: Dimenciones.width10 / 2),
-                            BigText(
-                                text: "\$ " +
-                                    cartController.totalAmount.toString()),
+                            BigText(text: "\$ ${cartController.totalAmount}"),
                             SizedBox(width: Dimenciones.width10 / 2),
                           ],
                         ),
@@ -282,31 +284,34 @@ class CartPage extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           if (Get.find<AuthController>().userLoggedIn()) {
-                            //print("tapped");
-                           // cartController.addToHistory();
                             if (Get.find<LocationController>().addressList.isEmpty) {
                               Get.toNamed(RouteHelper.getAddressPage());
                             }else{
-                              Get.offNamed(RouteHelper.getInitial());
+                              var location = Get.find<LocationController>().getUserAddress();
+                              var cart = Get.find<CartController>().getItems;
+                              var user = Get.find<UserController>().userModel;
+                              PlaceOrderBody placeOrder = PlaceOrderBody(
+                                  cart: cart,
+                                  orderAmount: 100.0,
+                                  distance: 10.0,
+                                  scheduleAt: '',
+                                  orderNote: "Not about the food",
+                                  address: location.address,
+                                  latitude: location.latitude,
+                                  longitude: location.longitude,
+                                  contactPersonName: user!.name,
+                                  contactPersonNumber: user!.phone
+                              );
+                              Get.find<OrderController>().placeOrder(placeOrder, _callBack);
                             }
                           } else {
                             Get.toNamed(RouteHelper.getSignInPage());
                           }
                         },
                         child: Container(
-                          padding: EdgeInsets.only(
-                              top: Dimenciones.height20,
-                              bottom: Dimenciones.height20,
-                              left: Dimenciones.width20,
-                              right: Dimenciones.width20),
-                          child: BigText(
-                            text: "Verificar",
-                            color: Colors.white,
-                          ),
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.circular(Dimenciones.radius20),
-                              color: AppColors.mainColor),
+                          padding: EdgeInsets.only(top: Dimenciones.height20, bottom: Dimenciones.height20, left: Dimenciones.width20, right: Dimenciones.width20),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(Dimenciones.radius20), color: AppColors.mainColor),
+                          child: BigText(text: "Verificar", color: Colors.white),
                         ),
                       )
                     ])
@@ -314,5 +319,13 @@ class CartPage extends StatelessWidget {
         );
       }),
     );
+  }
+
+  void _callBack(bool isSuccess, String message, String orderID){
+    if(isSuccess){
+      Get.offNamed(RouteHelper.getPaymentPage(orderID, Get.find<UserController>().userModel!.id));
+    } else {
+      showCustomSnackBar(message);
+    }
   }
 }
