@@ -38,8 +38,7 @@ class CartRepo {
     }
     List<CartModel> cartList = [];
 
-    carts.forEach(
-        (element) => cartList.add(CartModel.fromJson(jsonDecode(element))));
+    carts.forEach((element) => cartList.add(CartModel.fromJson(jsonDecode(element))));
 
     return cartList;
   }
@@ -47,34 +46,23 @@ class CartRepo {
   List<CartModel> getCartHistoryList() {
     if (sharedPreferences.containsKey(AppConstants.CART_HISTORY_LIST)) {
       //cartHistory = [];
-      cartHistory =
-          sharedPreferences.getStringList(AppConstants.CART_HISTORY_LIST)!;
+      cartHistory = sharedPreferences.getStringList(AppConstants.CART_HISTORY_LIST)!;
     }
     List<CartModel> cartListHistory = [];
-    cartHistory.forEach((element) =>
-        cartListHistory.add(CartModel.fromJson(jsonDecode(element))));
+    cartHistory.forEach((element) => cartListHistory.add(CartModel.fromJson(jsonDecode(element))));
     return cartListHistory;
   }
 
   void addToCartHistoryList() {
     if (sharedPreferences.containsKey(AppConstants.CART_HISTORY_LIST)) {
-      cartHistory =
-          sharedPreferences.getStringList(AppConstants.CART_HISTORY_LIST)!;
+      cartHistory = sharedPreferences.getStringList(AppConstants.CART_HISTORY_LIST)!;
     }
     for (int i = 0; i < cart.length; i++) {
-      print("History list " + cart[i]);
       cartHistory.add(cart[i]);
     }
-    removeCart();
-    sharedPreferences.setStringList(
-        AppConstants.CART_HISTORY_LIST, cartHistory);
-    print("The lenght of history list is " +
-        getCartHistoryList().length.toString());
-
-    for (int j = 0; j < getCartHistoryList().length; j++) {
-      print("The time for the order is " +
-          getCartHistoryList()[j].time.toString());
-    }
+    //removeCart();
+    cart = [];
+    sharedPreferences.setStringList(AppConstants.CART_HISTORY_LIST, cartHistory);
   }
 
   void removeCart() {
@@ -85,6 +73,11 @@ class CartRepo {
   void clearCartHistory() {
     removeCart();
     cartHistory = [];
+    sharedPreferences.remove(AppConstants.CART_HISTORY_LIST);
+  }
+
+  void removeCartSharedPreference(){
+    sharedPreferences.remove(AppConstants.CART_LIST);
     sharedPreferences.remove(AppConstants.CART_HISTORY_LIST);
   }
 }
