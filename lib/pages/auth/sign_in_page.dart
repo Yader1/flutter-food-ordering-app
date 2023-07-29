@@ -55,13 +55,13 @@ class SignInPage extends StatelessWidget {
                 SizedBox(
                   height: Dimenciones.screenHeight * 0.05,
                 ),
-                Container(
+                SizedBox(
                     height: Dimenciones.screenHeight * 0.25,
-                    child: Center(
+                    child: const Center(
                       child: CircleAvatar(
                         backgroundColor: Colors.white,
                         radius: 80.0,
-                        backgroundImage: AssetImage("assets/image/logo.jpeg"),
+                        backgroundImage: AssetImage("assets/image/logo.png"),
                       ),
                     )),
                 //Welcome
@@ -175,7 +175,7 @@ class SignInPage extends StatelessWidget {
                     ])),
               ],
             ),
-          ): CustomLoader();
+          ): const CustomLoader();
         }));
   }
 }

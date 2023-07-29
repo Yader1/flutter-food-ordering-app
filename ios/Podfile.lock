@@ -38,6 +38,10 @@ SPEC REPOS:
   trunk:
     - GoogleMaps
 
+SPEC REPOS:
+  trunk:
+    - GoogleMaps
+
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter

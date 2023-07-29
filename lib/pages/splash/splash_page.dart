@@ -32,7 +32,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
           ..forward();
     animation = CurvedAnimation(parent: controller, curve: Curves.linear);
 
-    Timer(Duration(seconds: 3), () => Get.offNamed(RouteHelper.getInitial()));
+    Timer(const Duration(seconds: 3), () => Get.offNamed(RouteHelper.getInitial()));
   }
 
   @override
@@ -43,7 +43,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
         ScaleTransition(
             scale: animation,
             child: Center(
-              child: Image.asset("assets/image/logo.jpeg", width: Dimenciones.splashImg),
+              child: Image.asset("assets/image/logo.png", width: Dimenciones.splashImg),
             ))
       ]),
     );
