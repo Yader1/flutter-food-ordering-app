@@ -4,6 +4,8 @@ import 'package:flutter_tienda_comida/pages/account/account_page.dart';
 import 'package:flutter_tienda_comida/pages/cart/cart_history.dart';
 import 'package:flutter_tienda_comida/pages/home/main_food_page.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
+
+import '../order/order_page.dart';
 //import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,11 +22,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   List pages = [
     MainFoodPage(),
-    Container(
-      child: Center(
-        child: Text('Next page'),
-      ),
-    ),
+    OrderPage(),
     CartHistory(),
     AccountPage()
   ];
