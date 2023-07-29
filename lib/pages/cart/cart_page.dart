@@ -164,11 +164,9 @@ class CartPage extends StatelessWidget {
                                                         .spaceBetween,
                                                 children: [
                                                   BigText(
-                                                    text: "\$ " +
-                                                        cartController
+                                                    text: "\$ ${cartController
                                                             .getItems[index]
-                                                            .price
-                                                            .toString(),
+                                                            .price}",
                                                     color: Colors.redAccent,
                                                   ),
                                                   Container(
@@ -241,7 +239,7 @@ class CartPage extends StatelessWidget {
                         ),
                       ),
                     ))
-                : NoDataPage(text: "¡Tu carrito esta vacío!");
+                : const NoDataPage(text: "¡Tu carrito esta vacío!");
           })
         ],
       ),
@@ -323,6 +321,9 @@ class CartPage extends StatelessWidget {
 
   void _callBack(bool isSuccess, String message, String orderID){
     if(isSuccess){
+      Get.find<CartController>().clear();
+      Get.find<CartController>().removeCartSharedPreference();
+      Get.find<CartController>().addToHistory();
       Get.offNamed(RouteHelper.getPaymentPage(orderID, Get.find<UserController>().userModel!.id));
     } else {
       showCustomSnackBar(message);
