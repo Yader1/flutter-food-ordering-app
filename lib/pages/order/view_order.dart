@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tienda_comida/base/custom_loader.dart';
 import 'package:flutter_tienda_comida/models/order_model.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
 import 'package:get/get.dart';
@@ -34,22 +35,27 @@ class ViewOrder extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("#order ID     ${orderList[index].id}"),
+                            Row(
+                              children: [
+                                Text("#order ID", style: TextStyle(fontSize: Dimenciones.font12, fontWeight: FontWeight.w700)),
+                                SizedBox(width: Dimenciones.width10/2),
+                                Text("#${orderList[index].id}"),
+                              ],
+                            ),
                             Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Container(
+                                    padding: EdgeInsets.symmetric(horizontal: Dimenciones.width10, vertical: Dimenciones.width10/2),
                                     decoration: BoxDecoration(
                                       color: AppColors.mainColor,
                                       borderRadius: BorderRadius.circular(Dimenciones.radius20/4),
                                     ),
-                                    child: Container(
-                                        margin: EdgeInsets.all(Dimenciones.height10/2),
-                                        child: Text(
-                                            "${orderList[index].orderStatus}",
-                                            style: const TextStyle(
-                                              color: Colors.white
-                                            )
+                                    child: Text(
+                                        "${orderList[index].orderStatus}",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: Dimenciones.font12
                                         )
                                     )
                                 ),
@@ -57,17 +63,18 @@ class ViewOrder extends StatelessWidget {
                                 InkWell(
                                   onTap: (){},
                                   child: Container(
+                                      padding: EdgeInsets.symmetric(horizontal: Dimenciones.width10, vertical: Dimenciones.width10/2),
                                       decoration: BoxDecoration(
                                           color: Colors.white,
                                           borderRadius: BorderRadius.circular(Dimenciones.radius20/4),
                                           border: Border.all(width: 1, color: AppColors.mainColor)
                                       ),
-                                      child: Container(
-                                          margin: EdgeInsets.all(Dimenciones.height10/2),
-                                          child: const Text(
-                                              "Track order",
-                                              style: TextStyle(color: Colors.black)
-                                          )
+                                      child: Row(
+                                        children: [
+                                          Icon(Icons.send_to_mobile, color: AppColors.mainColor),
+                                          SizedBox(width: Dimenciones.width10/2),
+                                          Text("Track order", style: TextStyle(color: AppColors.mainColor, fontSize: Dimenciones.font12))
+                                        ],
                                       )
                                   ),
                                 )
@@ -84,7 +91,7 @@ class ViewOrder extends StatelessWidget {
             ),
           );
         } else {
-          return Text("loading");
+          return const CustomLoader();
         }
       }),
     );

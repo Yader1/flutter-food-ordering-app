@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tienda_comida/base/custom_app_bar.dart';
 import 'package:flutter_tienda_comida/controllers/auth_controller.dart';
 import 'package:flutter_tienda_comida/pages/order/view_order.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
@@ -32,7 +33,7 @@ class _OrderPageState extends State<OrderPage> with TickerProviderStateMixin{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("My orders"), backgroundColor: AppColors.mainColor),
+      appBar: CustomAppBar(title: "My orders"),
       body: Column(
         children: [
           Container(

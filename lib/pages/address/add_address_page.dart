@@ -3,6 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
+import '../../base/custom_app_bar.dart';
 import '../../controllers/auth_controller.dart';
 import '../../controllers/location_controller.dart';
 import '../../controllers/user_controller.dart';
@@ -65,9 +66,8 @@ class _AddAddressPageState extends State<AddAddressPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("página de dirección"),
-          backgroundColor: AppColors.mainColor,
+        appBar: const CustomAppBar(
+          title: "página de dirección",
         ),
         body: GetBuilder<UserController>(builder: (userController) {
           if (userController.userModel != null && _contactPersonNameController.text.isEmpty) {

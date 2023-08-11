@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tienda_comida/base/common_text_button.dart';
 import 'package:flutter_tienda_comida/base/no_data_page.dart';
 import 'package:flutter_tienda_comida/base/show_custom_snackbar.dart';
 import 'package:flutter_tienda_comida/controllers/auth_controller.dart';
@@ -8,12 +9,15 @@ import 'package:flutter_tienda_comida/controllers/popular_product_controller.dar
 import 'package:flutter_tienda_comida/controllers/recommended_product_controller.dart';
 import 'package:flutter_tienda_comida/controllers/user_controller.dart';
 import 'package:flutter_tienda_comida/models/place_order_model.dart';
+import 'package:flutter_tienda_comida/pages/order/delivery_options.dart';
 import 'package:flutter_tienda_comida/routes/route_helper.dart';
 import 'package:flutter_tienda_comida/utils/app_constants.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
 import 'package:flutter_tienda_comida/utils/dimensiones.dart';
 import 'package:flutter_tienda_comida/widgets/app_icon.dart';
+import 'package:flutter_tienda_comida/widgets/app_text_field.dart';
 import 'package:flutter_tienda_comida/widgets/big_text.dart';
+import 'package:flutter_tienda_comida/pages/order/payment_option_button.dart';
 import 'package:flutter_tienda_comida/widgets/small_text.dart';
 import 'package:get/get.dart';
 
@@ -24,6 +28,7 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController _noteController = TextEditingController();
     return Scaffold(
       body: Stack(
         children: [
@@ -140,9 +145,7 @@ class CartPage extends StatelessWidget {
                                                 color: Colors.white),
                                           ),
                                         ),
-                                        SizedBox(
-                                          width: Dimenciones.width10,
-                                        ),
+                                        SizedBox(width: Dimenciones.width10,),
                                         Expanded(
                                           child: Container(
                                           height: Dimenciones.height20 * 5,
@@ -243,34 +246,126 @@ class CartPage extends StatelessWidget {
           })
         ],
       ),
-      bottomNavigationBar:
-          GetBuilder<CartController>(builder: (cartController) {
-        return Container(
-          height: Dimenciones.buttomHeightBar,
-          padding: EdgeInsets.only(
-              top: Dimenciones.height30,
-              bottom: Dimenciones.height30,
-              left: Dimenciones.width20,
-              right: Dimenciones.width20),
-          decoration: BoxDecoration(
-              color: AppColors.buttonBackgroundColor,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(Dimenciones.radius20 * 2),
-                  topRight: Radius.circular(Dimenciones.radius20 * 2))),
-          child: cartController.getItems.length > 0
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+      bottomNavigationBar: GetBuilder<OrderController>(builder: (orderController){
+        _noteController.text = orderController.foodNote;
+        return GetBuilder<CartController>(builder: (cartController) {
+          return Container(
+            height: Dimenciones.buttomHeightBar+50,
+            padding: EdgeInsets.only(
+                top: Dimenciones.height10,
+                bottom: Dimenciones.height10,
+                left: Dimenciones.width20,
+                right: Dimenciones.width20
+            ),
+            decoration: BoxDecoration(
+                color: AppColors.buttonBackgroundColor,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(Dimenciones.radius20 * 2),
+                    topRight: Radius.circular(Dimenciones.radius20 * 2)
+                )
+            ),
+            child: cartController.getItems.length > 0 ? Column(
+              children: [
+                InkWell(
+                  onTap: () => showModalBottomSheet(
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (_){
+                        return Column(
+                          children: [
+                            Expanded(
+                                child: SingleChildScrollView(
+                                  child: Container(
+                                    height: MediaQuery.of(context).size.height*0.9,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(Dimenciones.radius20),
+                                            topRight: Radius.circular(Dimenciones.radius20)
+                                        )
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          height: 520,
+                                          padding: EdgeInsets.only(
+                                              left: Dimenciones.width20,
+                                              right: Dimenciones.width20,
+                                              top: Dimenciones.height20
+                                          ),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              const PaymentOptionButton(
+                                                  iconData: Icons.money,
+                                                  title: "Cash on delivery",
+                                                  subTitle: "You pay after getting the delivery",
+                                                  index: 0
+                                              ),
+                                              SizedBox(height: Dimenciones.height10),
+                                              const PaymentOptionButton(
+                                                  iconData: Icons.paypal_outlined,
+                                                  title: "Digital payment",
+                                                  subTitle: "Safer and faster way of payment",
+                                                  index: 1
+                                              ),
+                                              SizedBox(height: Dimenciones.height30),
+                                              Text("Delivery options", style: TextStyle(fontSize: Dimenciones.font16)),
+                                              SizedBox(height: Dimenciones.height10/2),
+                                              DeliveryOptions(
+                                                  value: 'delivery',
+                                                  title: "Home delivery",
+                                                  amount: double.parse(Get.find<CartController>().totalAmount.toString()),
+                                                  isFree: false
+                                              ),
+                                              SizedBox(height: Dimenciones.height10/2),
+                                              DeliveryOptions(
+                                                  value: 'take away',
+                                                  title: "Take away",
+                                                  amount: double.parse(Get.find<CartController>().totalAmount.toString()),
+                                                  isFree: true
+                                              ),
+                                              SizedBox(height: Dimenciones.height30),
+                                              Text("Additional info", style: TextStyle(fontSize: Dimenciones.font16)),
+                                              SizedBox(height: Dimenciones.height10/2),
+                                              AppTextField(
+                                                textEditingController: _noteController,
+                                                hintText: '',
+                                                icon: Icons.note,
+                                                maxLines: true,
+                                              )
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                )
+                            )
+                          ],
+                        );
+                      }
+                  ).whenComplete(()=>orderController.setFoodNote(_noteController.text.trim())),
+                  child: const SizedBox(
+                    width: double.maxFinite,
+                    child: CommonTextButton(text: "Payment options"),
+                  ),
+                ),
+                SizedBox(height: Dimenciones.height10),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
                       Container(
                         padding: EdgeInsets.only(
                             top: Dimenciones.height20,
                             bottom: Dimenciones.height20,
                             left: Dimenciones.width20,
-                            right: Dimenciones.width20),
+                            right: Dimenciones.width20
+                        ),
                         decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.circular(Dimenciones.radius20),
-                            color: Colors.white),
+                            borderRadius: BorderRadius.circular(Dimenciones.radius20),
+                            color: Colors.white
+                        ),
                         child: Row(
                           children: [
                             SizedBox(width: Dimenciones.width10 / 2),
@@ -293,12 +388,14 @@ class CartPage extends StatelessWidget {
                                   orderAmount: 100.0,
                                   distance: 10.0,
                                   scheduleAt: '',
-                                  orderNote: "Not about the food",
+                                  orderNote: orderController.foodNote,
                                   address: location.address,
                                   latitude: location.latitude,
                                   longitude: location.longitude,
                                   contactPersonName: user!.name,
-                                  contactPersonNumber: user!.phone
+                                  contactPersonNumber: user!.phone,
+                                  orderType: orderController.orderType,
+                                  paymentMethod: orderController.paymentIndex == 0 ? 'cash_on_delivery':'digital_payment'
                               );
                               Get.find<OrderController>().placeOrder(placeOrder, _callBack);
                             }
@@ -306,16 +403,15 @@ class CartPage extends StatelessWidget {
                             Get.toNamed(RouteHelper.getSignInPage());
                           }
                         },
-                        child: Container(
-                          padding: EdgeInsets.only(top: Dimenciones.height20, bottom: Dimenciones.height20, left: Dimenciones.width20, right: Dimenciones.width20),
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(Dimenciones.radius20), color: AppColors.mainColor),
-                          child: BigText(text: "Verificar", color: Colors.white),
-                        ),
+                        child: const CommonTextButton(text: "Verificar"),
                       )
-                    ])
-              : Container(),
-        );
-      }),
+                    ]
+                ),
+              ],
+            ) : Container(),
+          );
+        });
+      })
     );
   }
 
@@ -324,7 +420,13 @@ class CartPage extends StatelessWidget {
       Get.find<CartController>().clear();
       Get.find<CartController>().removeCartSharedPreference();
       Get.find<CartController>().addToHistory();
-      Get.offNamed(RouteHelper.getPaymentPage(orderID, Get.find<UserController>().userModel!.id));
+
+      if(Get.find<OrderController>().paymentIndex == 0){
+        Get.offNamed(RouteHelper.getOrderSuccessPage(orderID, "success"));
+      } else {
+        Get.offNamed(RouteHelper.getPaymentPage(orderID, Get.find<UserController>().userModel!.id));
+      }
+
     } else {
       showCustomSnackBar(message);
     }
