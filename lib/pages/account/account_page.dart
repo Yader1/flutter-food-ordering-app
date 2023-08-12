@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tienda_comida/base/custom_app_bar.dart';
 import 'package:flutter_tienda_comida/base/custom_loader.dart';
 import 'package:flutter_tienda_comida/base/no_data_page.dart';
 import 'package:flutter_tienda_comida/controllers/auth_controller.dart';
@@ -25,14 +26,7 @@ class AccountPage extends StatelessWidget {
       Get.find<LocationController>().getAddressList();
     }
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.mainColor,
-        title: BigText(
-          text: "Perfil",
-          size: 24.0,
-          color: Colors.white,
-        ),
-      ),
+      appBar: const CustomAppBar(title: "Perfil"),
       body: GetBuilder<UserController>(builder: (UserController) {
         return _userLoggedIn
             ? (UserController.isLoading
