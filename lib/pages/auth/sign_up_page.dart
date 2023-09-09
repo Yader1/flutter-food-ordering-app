@@ -110,9 +110,10 @@ class SignUpPage extends StatelessWidget {
                 ),
                 //Phone
                 AppTextField(
-                    textEditingController: phoneController,
-                    hintText: "Teléfono",
-                    icon: Icons.phone_android),
+                  textInputType: TextInputType.number,
+                  textEditingController: phoneController,
+                  hintText: "Teléfono",
+                  icon: Icons.phone_android),
                 SizedBox(
                   height: Dimenciones.height20,
                 ),

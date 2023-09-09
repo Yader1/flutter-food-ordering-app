@@ -397,6 +397,7 @@ class CartPage extends StatelessWidget {
                                   orderType: orderController.orderType,
                                   paymentMethod: orderController.paymentIndex == 0 ? 'cash_on_delivery':'digital_payment'
                               );
+                              //TODO: Revisar lo que se envia y retorna una orden
                               Get.find<OrderController>().placeOrder(placeOrder, _callBack);
                             }
                           } else {
