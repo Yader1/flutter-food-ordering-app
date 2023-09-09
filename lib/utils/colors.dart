@@ -10,9 +10,9 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static Color textColor = const Color(0xFFccc7c5);
-  static Color mainColor = const Color(0xFFAA0C0C);
-  static Color iconColor1 = const Color(0xFFAA0C0C);
-  static Color iconColor2 = const Color(0xFFAA0C0C);
+  static Color mainColor = const Color(0xFFFC5858);
+  static Color iconColor1 = const Color(0xFFFC5858);
+  static Color iconColor2 = const Color(0xFFFC5858);
   static Color paraColor = const Color(0xFF8f837f);
   static Color buttonBackgroundColor = const Color(0xFFf7f6f4);
   static Color signColor = const Color(0xFFa9a29f);

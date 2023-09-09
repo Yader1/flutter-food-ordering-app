@@ -93,9 +93,11 @@ class SignInPage extends StatelessWidget {
                 ),
                 //Email
                 AppTextField(
-                    textEditingController: phoneController,
-                    hintText: "Teléfono",
-                    icon: Icons.phone_iphone),
+                  textInputType: TextInputType.number,
+                  textEditingController: phoneController,
+                  hintText: "Teléfono",
+                  icon: Icons.phone_iphone
+                ),
                 SizedBox(
                   height: Dimenciones.height20,
                 ),

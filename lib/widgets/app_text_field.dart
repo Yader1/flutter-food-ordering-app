@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../utils/colors.dart';
 import '../utils/dimensiones.dart';
@@ -9,6 +10,7 @@ class AppTextField extends StatelessWidget {
   final IconData icon;
   bool isObscure;
   bool maxLines;
+  TextInputType textInputType; 
 
   AppTextField({
     super.key,
@@ -16,7 +18,8 @@ class AppTextField extends StatelessWidget {
     required this.textEditingController,
     required this.hintText,
     required this.icon,
-    this.maxLines = false
+    this.maxLines = false,
+    this.textInputType = TextInputType.text
   });
 
   @override
@@ -36,6 +39,7 @@ class AppTextField extends StatelessWidget {
             )
           ]),
       child: TextField(
+        keyboardType: textInputType,
         maxLines: maxLines ? 3 : 1,
         obscureText: isObscure?true : false,
         controller: textEditingController,

@@ -1,8 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_tienda_comida/base/custom_app_bar.dart';
 import 'package:flutter_tienda_comida/controllers/auth_controller.dart';
 import 'package:flutter_tienda_comida/pages/order/view_order.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/order_controller.dart';
@@ -16,7 +17,7 @@ class OrderPage extends StatefulWidget {
 }
 
 class _OrderPageState extends State<OrderPage> with TickerProviderStateMixin{
-  late TabController _tabController;
+  TabController? _tabController;
   late bool _isLoggedIn;
 
   @override
@@ -25,18 +26,21 @@ class _OrderPageState extends State<OrderPage> with TickerProviderStateMixin{
     _isLoggedIn = Get.find<AuthController>().userLoggedIn();
 
     if(_isLoggedIn){
+      log("SALIDA"+_isLoggedIn.toString());
       _tabController = TabController(length: 2, vsync: this);
       Get.find<OrderController>().getOrderList();
+    } else {
+      log("SALIDA"+_isLoggedIn.toString());
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(title: "My orders"),
+    return _isLoggedIn ? Scaffold(
+      appBar: const CustomAppBar(title: "My orders"),
       body: Column(
         children: [
-          Container(
+          SizedBox(
             width: Dimenciones.screenWidth,
             child: TabBar(
               indicatorColor: Theme.of(context).primaryColor,
@@ -60,6 +64,11 @@ class _OrderPageState extends State<OrderPage> with TickerProviderStateMixin{
             ),
           )
         ],
+      ),
+    ) : const Scaffold(
+      appBar: CustomAppBar(title: "Orders"),
+      body: Center(
+        child: Text("Inicie sesion"),
       ),
     );
   }

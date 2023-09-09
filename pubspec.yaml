@@ -44,6 +44,9 @@ dependencies:
   http: ^0.13.5
   flutter_svg: ^1.1.6
   webview_flutter: ^2.0.9
+  firebase_core: ^1.2.1
+  firebase_messaging: ^11.2.4
+  flutter_local_notifications: ^9.1.5
   
   #Usar esta libreria si desea darle un disenio diferente al menu inferior
   #persistent_bottom_nav_bar: ^4.0.2
