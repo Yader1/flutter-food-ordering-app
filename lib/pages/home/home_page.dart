@@ -21,9 +21,9 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   List pages = [
     MainFoodPage(),
-    OrderPage(),
-    CartHistory(),
-    AccountPage(),
+    const OrderPage(),
+    const CartHistory(),
+    const AccountPage(),
     const CartHistory(),
     const AccountPage()
   ];

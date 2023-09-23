@@ -33,6 +33,7 @@ dependencies:
   get: ^4.1.4
   shared_preferences: ^2.0.15
   intl: ^0.17.0
+  fluttericon: ^2.0.0
   google_maps_flutter: ^2.2.0
   geocoding: ^2.0.4
   geolocator: ^8.2.0

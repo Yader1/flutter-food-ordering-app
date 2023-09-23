@@ -9,6 +9,10 @@ import 'package:flutter_tienda_comida/routes/route_helper.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
 import 'package:get/get.dart';
 import 'package:url_strategy/url_strategy.dart';
+import 'controllers/dessert_product_controller.dart';
+import 'controllers/drinks_product_controller.dart';
+import 'controllers/principal_product_controller.dart';
+import 'controllers/specialty_product_controller.dart';
 import 'helper/dependencies.dart' as dep;
 import 'helper/notification_helper.dart';
 import 'firebase_options.dart';
@@ -56,16 +60,28 @@ class MyApp extends StatelessWidget {
     Get.find<CartController>().getCartData();
     return GetBuilder<PopularProductController>(builder: (_) {
       return GetBuilder<RecommendedProductController>(builder: (_) {
-        return GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'App Food',
-          //home: SignInPage(),
-          initialRoute: RouteHelper.getSplashPage(),
-          getPages: RouteHelper.routes,
-          theme: ThemeData(
-            primaryColor: AppColors.mainColor,
-            //fontFamily: ""
-          ),
+        return GetBuilder<PrincipalProductController>(builder: (_) {
+            return GetBuilder<SpecialtyProductController>(builder: (_) {
+                return GetBuilder<DrinksProductController>(builder: (_) {
+                    return GetBuilder<DessertProductController>(builder: (_) {
+                        return GetMaterialApp(
+                          debugShowCheckedModeBanner: false,
+                          title: 'App Food',
+                          //home: SignInPage(),
+                          initialRoute: RouteHelper.getSplashPage(),
+                          getPages: RouteHelper.routes,
+                          theme: ThemeData(
+                            primaryColor: AppColors.mainColor,
+                            //fontFamily: ""
+                          ),
+                        );
+                      }
+                    );
+                  }
+                );
+              }
+            );
+          }
         );
       });
     });

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../utils/colors.dart';
 import '../utils/dimensiones.dart';
@@ -32,10 +31,11 @@ class AppTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(Dimenciones.radius15),
           boxShadow: [
             BoxShadow(
-              blurRadius: 3,
-              spreadRadius: 1,
-              offset: const Offset(1, 1),
-              color: Colors.grey.withOpacity(0.2),
+              //blurRadius: 3,
+              //spreadRadius: 1,
+              blurRadius: 3.0,
+              offset: const Offset(2, 4),
+              color: AppColors.mainColor.withOpacity(0.5),
             )
           ]),
       child: TextField(

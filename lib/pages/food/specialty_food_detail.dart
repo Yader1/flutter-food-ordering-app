@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
 import 'package:flutter_tienda_comida/controllers/popular_product_controller.dart';
-import 'package:flutter_tienda_comida/controllers/recommended_product_controller.dart';
 import 'package:flutter_tienda_comida/routes/route_helper.dart';
 import 'package:flutter_tienda_comida/utils/app_constants.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
@@ -11,14 +10,16 @@ import 'package:flutter_tienda_comida/widgets/big_text.dart';
 import 'package:flutter_tienda_comida/widgets/exandable_text_widget.dart';
 import 'package:get/get.dart';
 
-class RecommendeFoodDetail extends StatelessWidget {
+import '../../controllers/specialty_product_controller.dart';
+
+class SpecialtyFoodDetail extends StatelessWidget {
   final int pageId;
   final String page;
-  RecommendeFoodDetail({Key? key, required this.pageId, required this.page}) : super(key: key);
+  const SpecialtyFoodDetail({Key? key, required this.pageId, required this.page}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var product = Get.find<RecommendedProductController>().recommendedProductList[pageId];
+    var product = Get.find<SpecialtyProductController>().specialtyProductList[pageId];
     Get.find<PopularProductController>().initProduct(product, Get.find<CartController>());
     return Scaffold(
         backgroundColor: Colors.white,
@@ -36,21 +37,22 @@ class RecommendeFoodDetail extends StatelessWidget {
                       if(page == "cartpage"){
                         Get.toNamed(RouteHelper.getCartPage());
                       }else{
-                        Get.toNamed(RouteHelper.getInitial());
+                        Get.back();
                       }
                     },
-                    child: AppIcon(icon: Icons.clear),
+                    child: const AppIcon(icon: Icons.clear),
                   ),
                   //AppIcon(icon: Icons.shopping_cart_outlined),
                   GetBuilder<PopularProductController>(builder: (controller) {
                     return GestureDetector(
                         onTap: () {
-                          if (controller.totalItems >= 1)
+                          if (controller.totalItems >= 1) {
                             Get.toNamed(RouteHelper.getCartPage());
+                          }
                         },
                         child: Stack(
                           children: [
-                            AppIcon(icon: Icons.shopping_cart_outlined),
+                            const AppIcon(icon: Icons.shopping_cart_outlined),
                             Get.find<PopularProductController>().totalItems >= 1
                                 ? Positioned(
                                     right: 0,
@@ -81,15 +83,10 @@ class RecommendeFoodDetail extends StatelessWidget {
                 ],
               ),
               bottom: PreferredSize(
-                preferredSize: Size.fromHeight(20),
+                preferredSize: const Size.fromHeight(20),
                 child: Container(
-                  child: Center(
-                      child: BigText(
-                    text: product.name!,
-                    size: Dimenciones.font26,
-                  )),
                   width: double.maxFinite,
-                  padding: EdgeInsets.only(top: 5, bottom: 10),
+                  padding: const EdgeInsets.only(top: 5, bottom: 10),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
@@ -97,6 +94,11 @@ class RecommendeFoodDetail extends StatelessWidget {
                       topRight: Radius.circular(Dimenciones.radius20),
                     ),
                   ),
+                  child: Center(
+                      child: BigText(
+                    text: product.name!,
+                    size: Dimenciones.font26,
+                  )),
                 ),
               ),
               pinned: true,
@@ -115,9 +117,8 @@ class RecommendeFoodDetail extends StatelessWidget {
             SliverToBoxAdapter(
               child: Column(children: [
                 Container(
+                  margin: EdgeInsets.only(left: Dimenciones.width20, right: Dimenciones.width20),
                   child: ExandableTextWidget(text: product.description!),
-                  margin: EdgeInsets.only(
-                      left: Dimenciones.width20, right: Dimenciones.width20),
                 )
               ]),
             ),
@@ -199,18 +200,19 @@ class RecommendeFoodDetail extends StatelessWidget {
                       },
                       child: Container(
                         padding: EdgeInsets.only(
-                            top: Dimenciones.height20,
-                            bottom: Dimenciones.height20,
-                            left: Dimenciones.width20,
-                            right: Dimenciones.width20),
-                        child: BigText(
-                          text: "\$ ${product.price!} | Añadir a la cesta",
-                          color: Colors.white,
+                          top: Dimenciones.height20,
+                          bottom: Dimenciones.height20,
+                          left: Dimenciones.width20,
+                          right: Dimenciones.width20
                         ),
                         decoration: BoxDecoration(
                             borderRadius:
                                 BorderRadius.circular(Dimenciones.radius20),
                             color: AppColors.mainColor),
+                        child: BigText(
+                          text: "\$ ${product.price!} | Añadir a la cesta",
+                          color: Colors.white,
+                        ),
                       ),
                     )
                   ]),

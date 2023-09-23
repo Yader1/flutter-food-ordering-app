@@ -1,7 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tienda_comida/controllers/popular_product_controller.dart';
-import 'package:flutter_tienda_comida/controllers/recommended_product_controller.dart';
 import 'package:flutter_tienda_comida/models/products_model.dart';
 import 'package:flutter_tienda_comida/routes/route_helper.dart';
 import 'package:flutter_tienda_comida/utils/app_constants.dart';
@@ -9,9 +8,17 @@ import 'package:flutter_tienda_comida/utils/colors.dart';
 import 'package:flutter_tienda_comida/utils/dimensiones.dart';
 import 'package:flutter_tienda_comida/widgets/app_column.dart';
 import 'package:flutter_tienda_comida/widgets/big_text.dart';
-import 'package:flutter_tienda_comida/widgets/icon_and_text_widget.dart';
 import 'package:flutter_tienda_comida/widgets/small_text.dart';
 import 'package:get/get.dart';
+
+import '../../controllers/dessert_product_controller.dart';
+import '../../controllers/drinks_product_controller.dart';
+import '../../controllers/principal_product_controller.dart';
+import '../../controllers/specialty_product_controller.dart';
+import 'food_dessert_page.dart';
+import 'food_drink_page.dart';
+import 'food_principal_page.dart';
+import 'food_specialty_page.dart';
 
 class FoodPageBody extends StatefulWidget {
   const FoodPageBody({Key? key}) : super(key: key);
@@ -81,7 +88,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             ),
           );
         }),
-        //Populares
+        //Menu de la carta
         SizedBox(
           height: Dimenciones.height20,
         ),
@@ -90,7 +97,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              BigText(text: "Recomendados"),
+              BigText(text: "Menu del restaurante"),
               SizedBox(
                 width: Dimenciones.width10/1.2,
               ),
@@ -111,9 +118,191 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             ],
           ),
         ),
+        //Cuadros de opciones del menu
+        SizedBox(height: Dimenciones.height10),
+        SizedBox(
+          width: Dimenciones.screenWidth,
+          height: Dimenciones.height45*4,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () async {
+                    await Get.find<SpecialtyProductController>().getSpecialtyProductList();
+                    setState(() {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const FoodSpecialtyPage()),
+                      );
+                    });
+                  },
+                  child: Container(
+                    width: Dimenciones.screenWidth/2.2,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.mainColor.withOpacity(0.4),
+                          blurRadius: 10.0,
+                          offset: const Offset(2, 5)
+                        )
+                      ],
+                      borderRadius: BorderRadius.all(Radius.circular(Dimenciones.radius20)),
+                      color: Colors.white
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/image/especialidad.png',
+                          height: 80.0,
+                          fit: BoxFit.cover,
+                        ),
+                        SizedBox(height: Dimenciones.height10),
+                        BigText(text: "Especialidad", size: Dimenciones.font20, color: AppColors.mainColor),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(width: Dimenciones.width10),
+                GestureDetector(
+                  onTap: () async {
+                    await Get.find<PrincipalProductController>().getPrincipalProductList();
+                    setState(() {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const FoodPrincipalPage()),
+                      );
+                    });
+                  },
+                  child: Container(
+                    width: Dimenciones.screenWidth/2.2,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.mainColor.withOpacity(0.4),
+                          blurRadius: 10.0,
+                          offset: const Offset(2, 5)
+                        )
+                      ],
+                      borderRadius: BorderRadius.all(Radius.circular(Dimenciones.radius20)),
+                      color: Colors.white
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/image/principal.png',
+                          height: 80.0,
+                          fit: BoxFit.cover,
+                        ),
+                        SizedBox(height: Dimenciones.height10),
+                        BigText(text: "Principales", size: Dimenciones.font20, color: AppColors.mainColor),
+                      ],
+                    ),
+                  ),
+                ),
+              ]
+            ),
+          ),
+        ),
+        SizedBox(
+          width: Dimenciones.screenWidth,
+          height: Dimenciones.height45*4,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  onTap: () async {
+                    await Get.find<DessertProductController>().getDessertProductList();
+                    setState(() {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const FoodDessertPage()),
+                      );
+                    });
+                  },
+                  child: Container(
+                    width: Dimenciones.screenWidth/2.2,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.mainColor.withOpacity(0.4),
+                          blurRadius: 10.0,
+                          offset: const Offset(2, 5)
+                        )
+                      ],
+                      borderRadius: BorderRadius.all(Radius.circular(Dimenciones.radius20)),
+                      color: Colors.white
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/image/postre.png',
+                          height: 80.0,
+                          fit: BoxFit.cover,
+                        ),
+                        SizedBox(height: Dimenciones.height10),
+                        BigText(text: "Postres", size: Dimenciones.font20, color: AppColors.mainColor),
+                      ],
+                    ),
+                  ),
+                ),
+               
+                SizedBox(width: Dimenciones.width10),
+                GestureDetector(
+                  onTap: () async {
+                    await Get.find<DrinksProductController>().getDrinksProductList();
+                    setState(() {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const FoodDrinkPage()),
+                      );
+                    });
+                  },
+                  child: Container(
+                    width: Dimenciones.screenWidth/2.2,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.mainColor.withOpacity(0.4),
+                          blurRadius: 10.0,
+                          offset: const Offset(2, 5)
+                        )
+                      ],
+                      borderRadius: BorderRadius.all(Radius.circular(Dimenciones.radius20)),
+                      color: Colors.white
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/image/bebidas.png',
+                          height: 80.0,
+                          fit: BoxFit.cover,
+                        ),
+                        SizedBox(height: Dimenciones.height10),
+                        BigText(text: "Bebidas", size: Dimenciones.font20, color: AppColors.mainColor),
+                      ],
+                    ),
+                  ),
+                ),
+              ]
+            ),
+          ),
+        ),
+
         //Recomendaciones de comidas
         //Lista de comidas e imagenes
-        GetBuilder<RecommendedProductController>(builder: (recommendedProduct) {
+        /*GetBuilder<RecommendedProductController>(builder: (recommendedProduct) {
           return recommendedProduct.isLoaded
               ? ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
@@ -162,9 +351,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                               decoration: BoxDecoration(
                                   boxShadow: [
                                     BoxShadow(
-                                      color: AppColors.mainColor.withOpacity(0.2),
+                                      color: AppColors.mainColor.withOpacity(0.4),
                                       blurRadius: 10.0,
-                                      offset: const Offset(4, 8)
+                                      offset: const Offset(2, 5)
                                     )
                                   ],
                                   borderRadius: BorderRadius.only(
@@ -218,7 +407,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               : CircularProgressIndicator(
                   color: AppColors.mainColor,
                 );
-        })
+        })*/
       ],
     );
   }
@@ -283,14 +472,12 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(Dimenciones.radius20),
                   color: Colors.white,
-                  boxShadow: const [
+                  boxShadow: [
                     BoxShadow(
-                      color: Color(0xFFe8e8e8),
-                      blurRadius: 5.0,
-                      offset: Offset(0, 5),
-                    ),
-                    BoxShadow(color: Colors.white, offset: Offset(-5, 0)),
-                    BoxShadow(color: Colors.white, offset: Offset(5, 0))
+                      color: AppColors.mainColor.withOpacity(0.4),
+                      blurRadius: 10.0,
+                      offset: const Offset(2, 5)
+                    )
                   ]),
               //Informacion de la barra
               child: Container(

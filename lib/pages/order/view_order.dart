@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_tienda_comida/base/custom_loader.dart';
 import 'package:flutter_tienda_comida/models/order_model.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
 import 'package:get/get.dart';
 
+import '../../base/no_data_page.dart';
 import '../../controllers/order_controller.dart';
 import '../../utils/dimensiones.dart';
 
@@ -16,10 +19,16 @@ class ViewOrder extends StatelessWidget {
     return Scaffold(
       body: GetBuilder<OrderController>(builder: (orderController){
         if(orderController.isLoading == false){
-          late List<OrderModel> orderList;
+          List<OrderModel> orderList = [];
           if(orderController.currentOrderList.isNotEmpty){
             orderList = isCurrent ? orderController.currentOrderList.reversed.toList() :
             orderController.historyOrderList.reversed.toList();
+          }
+          
+          if(orderList.isEmpty){
+            return const Center(
+              child: NoDataPage(text: "No hay datos que mostrar", imgPath: "assets/image/undraw_empty_cart.svg"),
+            );
           }
 
           return SizedBox(

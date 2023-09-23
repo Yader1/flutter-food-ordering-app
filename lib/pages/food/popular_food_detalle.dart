@@ -18,11 +18,8 @@ class PopularFoodDetalle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var product =
-        Get.find<PopularProductController>().popularProductList[pageId];
-    Get.find<PopularProductController>()
-        .initProduct(product, Get.find<CartController>());
-
+    var product = Get.find<PopularProductController>().popularProductList[pageId];
+    Get.find<PopularProductController>().initProduct(product, Get.find<CartController>());
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -83,7 +80,7 @@ class PopularFoodDetalle extends StatelessWidget {
                                 : Container(),
                             Get.find<PopularProductController>().totalItems >= 1
                                 ? Positioned(
-                                    right: 3,
+                                    right: 5.5,
                                     top: 3,
                                     child: BigText(
                                       text: Get.find<PopularProductController>()

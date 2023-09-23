@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tienda_comida/controllers/popular_product_controller.dart';
+import 'package:flutter_tienda_comida/controllers/specialty_product_controller.dart';
 import 'package:flutter_tienda_comida/pages/home/food_page_body.dart';
 import 'package:flutter_tienda_comida/utils/colors.dart';
 import 'package:flutter_tienda_comida/utils/dimensiones.dart';
@@ -19,7 +20,8 @@ class MainFoodPage extends StatefulWidget {
 Future<void> _loadResource () async {
     await Get.find<PopularProductController>().getPopularProductList();
     await Get.find<RecommendedProductController>().getRecommendedProductList();
-  }
+    await Get.find<SpecialtyProductController>().getSpecialtyProductList();
+}
 class _MainFoodPageState extends State<MainFoodPage> {
   @override
   Widget build(BuildContext context) {
@@ -29,10 +31,8 @@ class _MainFoodPageState extends State<MainFoodPage> {
           //Showing the header
           Container(
             //Encabezado de la pagina principal
-            margin: EdgeInsets.only(
-                top: Dimenciones.height45, bottom: Dimenciones.height15),
-            padding: EdgeInsets.only(
-                left: Dimenciones.width20, right: Dimenciones.width20),
+            margin: EdgeInsets.only(top: Dimenciones.height45, bottom: Dimenciones.height15),
+            padding: EdgeInsets.only(left: Dimenciones.width20, right: Dimenciones.width20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -72,7 +72,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
           ),
           //Showing the body
           const Expanded(
-              child: SingleChildScrollView(
+            child: SingleChildScrollView(
             child: FoodPageBody(),
           ))
         ]));

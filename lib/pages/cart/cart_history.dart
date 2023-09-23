@@ -69,9 +69,14 @@ class CartHistory extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               BigText(text: "Historial del carrito", color: Colors.white),
-              AppIcon(
-                icon: Icons.shopping_cart_outlined,
-                iconColor: AppColors.mainColor,
+              GestureDetector(
+                onTap: () {
+                    Get.toNamed(RouteHelper.getCartPage());
+                },
+                child: AppIcon(
+                  icon: Icons.shopping_cart_outlined,
+                  iconColor: AppColors.mainColor,
+                ),
               ),
             ],
           ),
@@ -235,7 +240,7 @@ class CartHistory extends StatelessWidget {
                   child: const Center(
                     child: NoDataPage(
                       text: "¡Hasta ahora no has comprado nada!",
-                      imgPath: "assets/image/no_data.svg",
+                      imgPath: "assets/image/undraw_empty_cart.svg",
                     ),
                   ),
                 );

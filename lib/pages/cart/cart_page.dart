@@ -20,6 +20,7 @@ import 'package:flutter_tienda_comida/widgets/big_text.dart';
 import 'package:flutter_tienda_comida/pages/order/payment_option_button.dart';
 import 'package:flutter_tienda_comida/widgets/small_text.dart';
 import 'package:get/get.dart';
+import 'package:fluttericon/linecons_icons.dart';
 
 import '../../controllers/location_controller.dart';
 
@@ -39,11 +40,16 @@ class CartPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  AppIcon(
-                    icon: Icons.arrow_back_ios,
-                    iconColor: Colors.white,
-                    backgroundColor: AppColors.mainColor,
-                    iconSize: Dimenciones.iconSize24,
+                  GestureDetector(
+                    onTap: () {
+                      Get.back();
+                    },
+                    child: AppIcon(
+                      icon: Icons.arrow_back_ios,
+                      iconColor: Colors.white,
+                      backgroundColor: AppColors.mainColor,
+                      iconSize: Dimenciones.iconSize24,
+                    ),
                   ),
                   SizedBox(
                     width: Dimenciones.width20 * 5,
@@ -59,12 +65,12 @@ class CartPage extends StatelessWidget {
                       iconSize: Dimenciones.iconSize24,
                     ),
                   ),
-                  AppIcon(
+                  /*AppIcon(
                     icon: Icons.shopping_cart,
                     iconColor: Colors.white,
                     backgroundColor: AppColors.mainColor,
                     iconSize: Dimenciones.iconSize24,
-                  ),
+                  ),*/
                 ],
               )),
           //Body
@@ -297,36 +303,36 @@ class CartPage extends StatelessWidget {
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
                                               const PaymentOptionButton(
-                                                  iconData: Icons.money,
-                                                  title: "Cash on delivery",
-                                                  subTitle: "You pay after getting the delivery",
+                                                  iconData: Linecons.money,
+                                                  title: "Pago en efectivo",
+                                                  subTitle: "Pagas después de recibir la entrega.",
                                                   index: 0
                                               ),
                                               SizedBox(height: Dimenciones.height10),
                                               const PaymentOptionButton(
                                                   iconData: Icons.paypal_outlined,
                                                   title: "Digital payment",
-                                                  subTitle: "Safer and faster way of payment",
+                                                  subTitle: "Forma de pago más segura y rápida",
                                                   index: 1
                                               ),
                                               SizedBox(height: Dimenciones.height30),
-                                              Text("Delivery options", style: TextStyle(fontSize: Dimenciones.font16)),
+                                              Text("Opciones de entrega", style: TextStyle(fontSize: Dimenciones.font16)),
                                               SizedBox(height: Dimenciones.height10/2),
                                               DeliveryOptions(
                                                   value: 'delivery',
-                                                  title: "Home delivery",
+                                                  title: "Entrega a domicilio",
                                                   amount: double.parse(Get.find<CartController>().totalAmount.toString()),
                                                   isFree: false
                                               ),
                                               SizedBox(height: Dimenciones.height10/2),
                                               DeliveryOptions(
                                                   value: 'take away',
-                                                  title: "Take away",
+                                                  title: "Llevar",
                                                   amount: double.parse(Get.find<CartController>().totalAmount.toString()),
                                                   isFree: true
                                               ),
                                               SizedBox(height: Dimenciones.height30),
-                                              Text("Additional info", style: TextStyle(fontSize: Dimenciones.font16)),
+                                              Text("información adicional", style: TextStyle(fontSize: Dimenciones.font16)),
                                               SizedBox(height: Dimenciones.height10/2),
                                               AppTextField(
                                                 textEditingController: _noteController,
@@ -348,7 +354,7 @@ class CartPage extends StatelessWidget {
                   ).whenComplete(()=>orderController.setFoodNote(_noteController.text.trim())),
                   child: const SizedBox(
                     width: double.maxFinite,
-                    child: CommonTextButton(text: "Payment options"),
+                    child: CommonTextButton(text: "Opciones de pago"),
                   ),
                 ),
                 SizedBox(height: Dimenciones.height10),

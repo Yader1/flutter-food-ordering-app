@@ -177,15 +177,15 @@ class AccountPage extends StatelessWidget {
                       ))
                     ]),
                   )
-                : CustomLoader())
+                : const CustomLoader())
             : Container(
                 child: Center(
                     child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    NoDataPage(
+                    const NoDataPage(
                       text: "",
-                      imgPath: "assets/image/sign_user.svg",
+                      imgPath: "assets/image/undraw_sign_up.svg",
                     ),
                     GestureDetector(
                       onTap: () {
@@ -193,7 +193,7 @@ class AccountPage extends StatelessWidget {
                       },
                       child: Container(
                           width: double.maxFinite,
-                          height: Dimenciones.height20 * 5,
+                          height: Dimenciones.height20 * 4,
                           margin: EdgeInsets.only(
                               left: Dimenciones.width20,
                               right: Dimenciones.width20),

@@ -6,6 +6,7 @@ import 'package:flutter_tienda_comida/controllers/auth_controller.dart';
 import 'package:flutter_tienda_comida/pages/order/view_order.dart';
 import 'package:get/get.dart';
 
+import '../../base/no_data_page.dart';
 import '../../controllers/order_controller.dart';
 import '../../utils/dimensiones.dart';
 
@@ -68,9 +69,8 @@ class _OrderPageState extends State<OrderPage> with TickerProviderStateMixin{
     ) : const Scaffold(
       appBar: CustomAppBar(title: "Orders"),
       body: Center(
-        child: Text("Inicie sesion"),
+        child: NoDataPage(text: "Inicie sesion", imgPath: "assets/image/undraw_unlock.svg"),
       ),
     );
   }
 }
-

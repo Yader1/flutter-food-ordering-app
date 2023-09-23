@@ -5,9 +5,15 @@ class AppConstants {
   //URL LOCAL http://mvs.bslmeiyu.com
   //static const String BASE_URL = "http://127.0.0.1:8000"; //Para iOS
   static const String BASE_URL = "http://10.0.2.2:8000"; //Para Android
+  //URL Menu
   static const String POPULAR_PRODUCT_URI = "/api/v1/products/popular";
   static const String RECOMMENDED_PRODUCT_URI = "/api/v1/products/recommended";
-  static const String DRINKS_URI = "/api/v1/products/drinks";
+  static const String DRINKS_PRODUCT_URI = "/api/v1/products/drinks";
+  static const String SPECIALTY_PRODUCT_URI = "/api/v1/products/specialty";
+  static const String DESSERT_PRODUCT_URI = "/api/v1/products/dessert";
+  static const String PRINCIPAL_PRODUCT_URI = "/api/v1/products/principal";
+
+
   static const String UPLOAD_URL = "/uploads/";
 
   //URL Auht end points

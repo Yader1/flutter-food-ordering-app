@@ -75,12 +75,8 @@ class SignUpPage extends StatelessWidget {
                 ),
                 SizedBox(
                     height: Dimenciones.screenHeight * 0.25,
-                    child: const Center(
-                      child: CircleAvatar(
-                        backgroundColor: Colors.white,
-                        radius: 80.0,
-                        backgroundImage: AssetImage("assets/image/logo.png"),
-                      ),
+                    child: Center(
+                      child: Image.asset("assets/image/logo.png"),
                     )),
                 //Email
                 AppTextField(
@@ -125,11 +121,20 @@ class SignUpPage extends StatelessWidget {
                   },
                   child: Container(
                     width: Dimenciones.screenWidth / 2,
-                    height: Dimenciones.screenHeight / 13,
+                    height: Dimenciones.screenHeight / 15,
                     decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(Dimenciones.radius30),
-                        color: AppColors.mainColor),
+                      borderRadius: BorderRadius.circular(Dimenciones.radius30),
+                      color: AppColors.mainColor,
+                      boxShadow: [
+                        BoxShadow(
+                          //blurRadius: 3,
+                          //spreadRadius: 1,
+                          blurRadius: 5.0,
+                          offset: const Offset(0, 5),
+                          color: AppColors.mainColor.withOpacity(0.5),
+                        )
+                      ]
+                    ),
                     child: Center(
                       child: BigText(
                         text: "Inscribirse",
