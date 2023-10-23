@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/widgets/big_text.dart';
 
+import '../widgets/big_text.dart';
 import '../utils/colors.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget{

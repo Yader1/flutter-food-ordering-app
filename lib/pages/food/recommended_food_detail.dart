@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
-import 'package:flutter_tienda_comida/controllers/popular_product_controller.dart';
-import 'package:flutter_tienda_comida/controllers/recommended_product_controller.dart';
-import 'package:flutter_tienda_comida/routes/route_helper.dart';
-import 'package:flutter_tienda_comida/utils/app_constants.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
-import 'package:flutter_tienda_comida/utils/dimensiones.dart';
-import 'package:flutter_tienda_comida/widgets/app_icon.dart';
-import 'package:flutter_tienda_comida/widgets/big_text.dart';
-import 'package:flutter_tienda_comida/widgets/exandable_text_widget.dart';
 import 'package:get/get.dart';
+
+import '../../controllers/cart_controller.dart';
+import '../../controllers/popular_product_controller.dart';
+import '../../controllers/recommended_product_controller.dart';
+import '../../routes/route_helper.dart';
+import '../../utils/app_constants.dart';
+import '../../utils/colors.dart';
+import '../../utils/dimensiones.dart';
+import '../../widgets/app_icon.dart';
+import '../../widgets/big_text.dart';
+import '../../widgets/exandable_text_widget.dart';
 
 class RecommendeFoodDetail extends StatelessWidget {
   final int pageId;

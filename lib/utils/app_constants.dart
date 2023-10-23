@@ -2,9 +2,10 @@ class AppConstants {
   static const String APP_NAME = "DBFood";
   static const int APP_VERSION = 1;
 
-  //URL LOCAL http://mvs.bslmeiyu.com
+  //URL LOCAL
   //static const String BASE_URL = "http://127.0.0.1:8000"; //Para iOS
   static const String BASE_URL = "http://10.0.2.2:8000"; //Para Android
+
   //URL Menu
   static const String POPULAR_PRODUCT_URI = "/api/v1/products/popular";
   static const String RECOMMENDED_PRODUCT_URI = "/api/v1/products/recommended";
@@ -12,7 +13,6 @@ class AppConstants {
   static const String SPECIALTY_PRODUCT_URI = "/api/v1/products/specialty";
   static const String DESSERT_PRODUCT_URI = "/api/v1/products/dessert";
   static const String PRINCIPAL_PRODUCT_URI = "/api/v1/products/principal";
-
 
   static const String UPLOAD_URL = "/uploads/";
 
@@ -41,4 +41,5 @@ class AppConstants {
   static const String PASSWORD = "";
   static const String CART_LIST = "cart-list";
   static const String CART_HISTORY_LIST = "cart-history-list";
+  static bool isOrderBack = false;
 }

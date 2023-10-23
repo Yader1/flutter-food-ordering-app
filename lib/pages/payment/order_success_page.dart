@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/base/custom_button.dart';
-import 'package:flutter_tienda_comida/routes/route_helper.dart';
+
+import '../../base/custom_button.dart';
+import '../../routes/route_helper.dart';
+
 import 'package:get/get.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimensiones.dart';
@@ -27,14 +29,14 @@ class OrderSuccessPage extends StatelessWidget {
               Icon(status == 1 ? Icons.check_circle_outline : Icons.warning_amber_outlined, size: 100.0, color: AppColors.mainColor),
               SizedBox(height: Dimenciones.height30),
               Text(
-                status == 1 ? 'You placed the order successfully' : 'Your order failed',
+                status == 1 ? 'Hiciste el pedido exitosamente' : 'Tu pedido falló',
                 style: TextStyle(fontSize: Dimenciones.font20)
               ),
               SizedBox(height: Dimenciones.height20),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: Dimenciones.height20, vertical: Dimenciones.height10),
                 child: Text(
-                  status == 1 ? 'Successful order' : 'Failed order',
+                  status == 1 ? 'Pedido exitoso' : 'Pedido fallido',
                   style: TextStyle(
                     fontSize: Dimenciones.font20,
                     color: Theme.of(context).disabledColor
@@ -46,7 +48,7 @@ class OrderSuccessPage extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(Dimenciones.height10),
                 child: CustomButton(
-                  buttonText: 'Back to Home',
+                  buttonText: 'Volver al inicio',
                   onPressed: ()=>Get.offAllNamed(RouteHelper.getInitial()),
                 ),
               )

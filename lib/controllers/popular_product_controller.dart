@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
-import 'package:flutter_tienda_comida/data/repository/popular_product_repo.dart';
-import 'package:flutter_tienda_comida/models/cart_model.dart';
-import 'package:flutter_tienda_comida/models/products_model.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
+
+import '../controllers/cart_controller.dart';
+import '../data/repository/popular_product_repo.dart';
+import '../models/cart_model.dart';
+import '../models/products_model.dart';
+import '../utils/colors.dart';
+
 import 'package:get/get.dart';
 
 class PopularProductController extends GetxController {

@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/data/api/api_checker.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
@@ -12,6 +11,7 @@ import 'package:google_maps_webservice/src/places.dart';
 import '../data/repository/location_repo.dart';
 import '../models/address_model.dart';
 import '../models/response_modal.dart';
+import '../data/api/api_checker.dart';
 
 class LocationController extends GetxController implements GetxService {
   LocationRepo locationRepo;

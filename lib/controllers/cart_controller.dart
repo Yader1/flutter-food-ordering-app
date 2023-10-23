@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/data/repository/cart_repo.dart';
-import 'package:flutter_tienda_comida/models/cart_model.dart';
-import 'package:flutter_tienda_comida/models/products_model.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
+
+import 'package:saiskarFood/data/repository/cart_repo.dart';
+import 'package:saiskarFood/models/cart_model.dart';
+import 'package:saiskarFood/models/products_model.dart';
+import 'package:saiskarFood/utils/colors.dart';
+
 import 'package:get/get.dart';
 
 class CartController extends GetxController {

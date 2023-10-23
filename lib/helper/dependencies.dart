@@ -1,18 +1,19 @@
-import 'package:flutter_tienda_comida/controllers/auth_controller.dart';
-import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
-import 'package:flutter_tienda_comida/controllers/order_controller.dart';
-import 'package:flutter_tienda_comida/controllers/popular_product_controller.dart';
-import 'package:flutter_tienda_comida/controllers/recommended_product_controller.dart';
-import 'package:flutter_tienda_comida/controllers/user_controller.dart';
-import 'package:flutter_tienda_comida/data/api/api_client.dart';
-import 'package:flutter_tienda_comida/data/repository/auth_repo.dart';
-import 'package:flutter_tienda_comida/data/repository/cart_repo.dart';
-import 'package:flutter_tienda_comida/data/repository/order_repo.dart';
-import 'package:flutter_tienda_comida/data/repository/popular_product_repo.dart';
-import 'package:flutter_tienda_comida/data/repository/recommended_product_repo.dart';
-import 'package:flutter_tienda_comida/data/repository/specialty_product_repo.dart';
-import 'package:flutter_tienda_comida/data/repository/user_repo.dart';
-import 'package:flutter_tienda_comida/utils/app_constants.dart';
+import '../controllers/auth_controller.dart';
+import '../controllers/cart_controller.dart';
+import '../controllers/order_controller.dart';
+import '../controllers/popular_product_controller.dart';
+import '../controllers/recommended_product_controller.dart';
+import '../controllers/user_controller.dart';
+import '../data/api/api_client.dart';
+import '../data/repository/auth_repo.dart';
+import '../data/repository/cart_repo.dart';
+import '../data/repository/order_repo.dart';
+import '../data/repository/popular_product_repo.dart';
+import '../data/repository/recommended_product_repo.dart';
+import '../data/repository/specialty_product_repo.dart';
+import '../data/repository/user_repo.dart';
+import '../utils/app_constants.dart';
+
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

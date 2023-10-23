@@ -1,14 +1,14 @@
-import 'package:flutter_tienda_comida/models/order_model.dart';
-import 'package:flutter_tienda_comida/pages/address/pick_address_map.dart';
-import 'package:flutter_tienda_comida/pages/auth/sign_in_page.dart';
-import 'package:flutter_tienda_comida/pages/cart/cart_page.dart';
-import 'package:flutter_tienda_comida/pages/food/popular_food_detalle.dart';
-import 'package:flutter_tienda_comida/pages/food/recommended_food_detail.dart';
-import 'package:flutter_tienda_comida/pages/home/home_page.dart';
-import 'package:flutter_tienda_comida/pages/payment/payment_page.dart';
-import 'package:flutter_tienda_comida/pages/splash/splash_page.dart';
 import 'package:get/get.dart';
 
+import '../models/order_model.dart';
+import '../pages/address/pick_address_map.dart';
+import '../pages/auth/sign_in_page.dart';
+import '../pages/cart/cart_page.dart';
+import '../pages/food/popular_food_detalle.dart';
+import '../pages/food/recommended_food_detail.dart';
+import '../pages/home/home_page.dart';
+import '../pages/payment/payment_page.dart';
+import '../pages/splash/splash_page.dart';
 import '../pages/address/add_address_page.dart';
 import '../pages/food/dessert_food_detail.dart';
 import '../pages/food/drink_food_detail.dart';

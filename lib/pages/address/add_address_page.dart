@@ -1,4 +1,5 @@
-import 'package:flutter_tienda_comida/pages/address/pick_address_map.dart';
+import '../../pages/address/pick_address_map.dart';
+
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import '../../controllers/location_controller.dart';
 import '../../controllers/user_controller.dart';
 import '../../models/address_model.dart';
 import '../../routes/route_helper.dart';
+import '../../utils/app_constants.dart';
 import '../../utils/colors.dart';
 import '../../utils/dimensiones.dart';
 import '../../widgets/app_text_field.dart';
@@ -232,7 +234,13 @@ class _AddAddressPageState extends State<AddAddressPage> {
                         );
                         locationController.addAddress(_addressModel).then((response){
                           if (response.isSuccess) {
-                            Get.toNamed(RouteHelper.getInitial());
+                            //Get.toNamed(RouteHelper.getInitial());
+                            if(AppConstants.isOrderBack == false){
+                              Get.toNamed(RouteHelper.getInitial());
+                            } else {
+                              AppConstants.isOrderBack = false;
+                              Get.toNamed(RouteHelper.getCartPage());
+                            }
                             Get.snackbar("Dirección", "Agregado exitosamente");
                           } else {
                             Get.snackbar("Dirección", "No se pudo guardar la dirección");

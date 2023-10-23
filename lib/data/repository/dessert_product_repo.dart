@@ -1,7 +1,7 @@
-import 'package:flutter_tienda_comida/data/api/api_client.dart';
-import 'package:flutter_tienda_comida/utils/app_constants.dart';
-import 'package:get/get.dart';
+import '../../data/api/api_client.dart';
+import '../../utils/app_constants.dart';
 
+import 'package:get/get.dart';
 class DessertProductRepo extends GetxService {
   final ApiClient apiClient;
 

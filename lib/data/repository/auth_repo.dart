@@ -1,6 +1,7 @@
-import 'package:flutter_tienda_comida/data/api/api_client.dart';
-import 'package:flutter_tienda_comida/models/signup_body_model.dart';
-import 'package:flutter_tienda_comida/utils/app_constants.dart';
+import '../../data/api/api_client.dart';
+import '../../models/signup_body_model.dart';
+import '../../utils/app_constants.dart';
+
 import 'package:get/get_connect.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

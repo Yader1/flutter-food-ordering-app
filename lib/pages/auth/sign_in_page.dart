@@ -1,14 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/base/custom_loader.dart';
-import 'package:flutter_tienda_comida/pages/auth/sign_up_page.dart';
-import 'package:flutter_tienda_comida/routes/route_helper.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
-import 'package:flutter_tienda_comida/utils/dimensiones.dart';
-import 'package:flutter_tienda_comida/widgets/app_text_field.dart';
-import 'package:flutter_tienda_comida/widgets/big_text.dart';
 import 'package:get/get.dart';
 
+import '../../base/custom_loader.dart';
+import '../../pages/auth/sign_up_page.dart';
+import '../../routes/route_helper.dart';
+import '../../utils/colors.dart';
+import '../../utils/dimensiones.dart';
+import '../../widgets/app_text_field.dart';
+import '../../widgets/big_text.dart';
 import '../../base/show_custom_snackbar.dart';
 import '../../controllers/auth_controller.dart';
 

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/utils/dimensiones.dart';
-import 'package:flutter_tienda_comida/widgets/app_icon.dart';
-import 'package:flutter_tienda_comida/widgets/big_text.dart';
+
+import '../utils/dimensiones.dart';
+import '../widgets/app_icon.dart';
+import '../widgets/big_text.dart';
 
 class AccountWidget extends StatelessWidget {
   AppIcon appIcon;

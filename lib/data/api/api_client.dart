@@ -1,4 +1,4 @@
-import 'package:flutter_tienda_comida/utils/app_constants.dart';
+import 'package:saiskarFood/utils/app_constants.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -1,6 +1,7 @@
-import 'package:flutter_tienda_comida/data/api/api_client.dart';
-import 'package:flutter_tienda_comida/models/place_order_model.dart';
-import 'package:flutter_tienda_comida/utils/app_constants.dart';
+import '../../data/api/api_client.dart';
+import '../../models/place_order_model.dart';
+import '../../utils/app_constants.dart';
+
 import 'package:get/get.dart';
 
 class OrderRepo{

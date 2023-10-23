@@ -1,10 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/controllers/popular_product_controller.dart';
-import 'package:flutter_tienda_comida/controllers/recommended_product_controller.dart';
-import 'package:flutter_tienda_comida/routes/route_helper.dart';
-import 'package:flutter_tienda_comida/utils/dimensiones.dart';
+
+import '../../controllers/popular_product_controller.dart';
+import '../../controllers/recommended_product_controller.dart';
+import '../../routes/route_helper.dart';
+import '../../utils/dimensiones.dart';
+
 import 'package:get/get.dart';
 
 class SplashPage extends StatefulWidget {

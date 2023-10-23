@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/base/custom_button.dart';
-import 'package:flutter_tienda_comida/controllers/location_controller.dart';
-import 'package:flutter_tienda_comida/pages/address/widgets/search_location_dialogue_page.dart';
-import 'package:flutter_tienda_comida/routes/route_helper.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
-import 'package:flutter_tienda_comida/utils/dimensiones.dart';
+
+import '../../base/custom_button.dart';
+import '../../controllers/location_controller.dart';
+import '../../pages/address/widgets/search_location_dialogue_page.dart';
+import '../../routes/route_helper.dart';
+import '../../utils/colors.dart';
+import '../../utils/dimensiones.dart';
+
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:get/get.dart';
 
@@ -28,7 +30,7 @@ class _PickAddressMapState extends State<PickAddressMap> {
   void initState() {
     super.initState();
     if(Get.find<LocationController>().addressList.isEmpty){
-      _initialPosition = LatLng(45.521563, -122.677433);
+      _initialPosition = LatLng(14.028501, -83.382876);
       _cameraPosition = CameraPosition(target: _initialPosition, zoom: 17);
     }else{
       if(Get.find<LocationController>().addressList.isNotEmpty){

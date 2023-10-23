@@ -1,6 +1,9 @@
-import 'package:flutter_tienda_comida/data/repository/order_repo.dart';
-import 'package:flutter_tienda_comida/models/order_model.dart';
-import 'package:flutter_tienda_comida/models/place_order_model.dart';
+import 'dart:developer';
+
+import '../data/repository/order_repo.dart';
+import '../models/order_model.dart';
+import '../models/place_order_model.dart';
+
 import 'package:get/get.dart';
 
 class OrderController extends GetxController implements GetxService{
@@ -26,6 +29,7 @@ class OrderController extends GetxController implements GetxService{
   Future<void> placeOrder(PlaceOrderBody placeOrder, Function callback) async {
     _isLoading = true;
     Response response = await orderRepo.placeOrder(placeOrder);
+    log("RESPONSE PLACEORDER -> ${response.body}");
 
     if(response.statusCode == 200){
       _isLoading = false;

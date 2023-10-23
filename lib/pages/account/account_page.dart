@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/base/custom_app_bar.dart';
-import 'package:flutter_tienda_comida/base/custom_loader.dart';
-import 'package:flutter_tienda_comida/base/no_data_page.dart';
-import 'package:flutter_tienda_comida/controllers/auth_controller.dart';
-import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
-import 'package:flutter_tienda_comida/controllers/user_controller.dart';
-import 'package:flutter_tienda_comida/routes/route_helper.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
-import 'package:flutter_tienda_comida/utils/dimensiones.dart';
-import 'package:flutter_tienda_comida/widgets/account_widget.dart';
-import 'package:flutter_tienda_comida/widgets/app_icon.dart';
-import 'package:flutter_tienda_comida/widgets/big_text.dart';
+
+import '../../base/custom_app_bar.dart';
+import '../../base/custom_loader.dart';
+import '../../base/no_data_page.dart';
+import '../../controllers/auth_controller.dart';
+import '../../controllers/cart_controller.dart';
+import '../../controllers/user_controller.dart';
+import '../../routes/route_helper.dart';
+import '../../utils/app_constants.dart';
+import '../../utils/colors.dart';
+import '../../utils/dimensiones.dart';
+import '../../widgets/account_widget.dart';
+import '../../widgets/app_icon.dart';
+import '../../widgets/big_text.dart';
+
 import 'package:get/get.dart';
 
 import '../../controllers/location_controller.dart';
@@ -99,6 +102,7 @@ class AccountPage extends StatelessWidget {
                               if (_userLoggedIn && locationController.addressList.isEmpty){
                                 return GestureDetector(
                                   onTap: (){
+                                    AppConstants.isOrderBack = false;
                                     Get.offNamed(RouteHelper.getAddressPage());
                                   },
                                   child: AccountWidget(
@@ -115,6 +119,7 @@ class AccountPage extends StatelessWidget {
                               } else {
                                 return GestureDetector(
                                   onTap: (){
+                                    AppConstants.isOrderBack = false;
                                     Get.offNamed(RouteHelper.getAddressPage());
                                   },
                                   child: AccountWidget(

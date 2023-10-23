@@ -1,20 +1,21 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/controllers/popular_product_controller.dart';
-import 'package:flutter_tienda_comida/models/products_model.dart';
-import 'package:flutter_tienda_comida/routes/route_helper.dart';
-import 'package:flutter_tienda_comida/utils/app_constants.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
-import 'package:flutter_tienda_comida/utils/dimensiones.dart';
-import 'package:flutter_tienda_comida/widgets/app_column.dart';
-import 'package:flutter_tienda_comida/widgets/big_text.dart';
-import 'package:flutter_tienda_comida/widgets/small_text.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/popular_product_controller.dart';
+import '../../models/products_model.dart';
+import '../../routes/route_helper.dart';
+import '../../utils/app_constants.dart';
+import '../../utils/colors.dart';
+import '../../utils/dimensiones.dart';
+import '../../widgets/app_column.dart';
+import '../../widgets/big_text.dart';
+import '../../widgets/small_text.dart';
 import '../../controllers/dessert_product_controller.dart';
 import '../../controllers/drinks_product_controller.dart';
 import '../../controllers/principal_product_controller.dart';
 import '../../controllers/specialty_product_controller.dart';
+
 import 'food_dessert_page.dart';
 import 'food_drink_page.dart';
 import 'food_principal_page.dart';

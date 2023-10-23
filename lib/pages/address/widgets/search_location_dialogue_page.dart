@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/controllers/location_controller.dart';
-import 'package:flutter_tienda_comida/utils/dimensiones.dart';
+
+import '../../../controllers/location_controller.dart';
+import '../../../utils/dimensiones.dart';
+
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:get/get.dart';
@@ -31,7 +33,7 @@ class LocationDialogue extends StatelessWidget {
                 textCapitalization: TextCapitalization.words,
                 keyboardType: TextInputType.streetAddress,
                 decoration: InputDecoration(
-                  hintText: "search location",
+                  hintText: "ubicacion de busqueda",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                     borderSide: const BorderSide(

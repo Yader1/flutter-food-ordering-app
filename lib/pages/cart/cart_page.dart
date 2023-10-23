@@ -1,27 +1,29 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/base/common_text_button.dart';
-import 'package:flutter_tienda_comida/base/no_data_page.dart';
-import 'package:flutter_tienda_comida/base/show_custom_snackbar.dart';
-import 'package:flutter_tienda_comida/controllers/auth_controller.dart';
-import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
-import 'package:flutter_tienda_comida/controllers/order_controller.dart';
-import 'package:flutter_tienda_comida/controllers/popular_product_controller.dart';
-import 'package:flutter_tienda_comida/controllers/recommended_product_controller.dart';
-import 'package:flutter_tienda_comida/controllers/user_controller.dart';
-import 'package:flutter_tienda_comida/models/place_order_model.dart';
-import 'package:flutter_tienda_comida/pages/order/delivery_options.dart';
-import 'package:flutter_tienda_comida/routes/route_helper.dart';
-import 'package:flutter_tienda_comida/utils/app_constants.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
-import 'package:flutter_tienda_comida/utils/dimensiones.dart';
-import 'package:flutter_tienda_comida/widgets/app_icon.dart';
-import 'package:flutter_tienda_comida/widgets/app_text_field.dart';
-import 'package:flutter_tienda_comida/widgets/big_text.dart';
-import 'package:flutter_tienda_comida/pages/order/payment_option_button.dart';
-import 'package:flutter_tienda_comida/widgets/small_text.dart';
 import 'package:get/get.dart';
 import 'package:fluttericon/linecons_icons.dart';
 
+import '../../base/common_text_button.dart';
+import '../../base/no_data_page.dart';
+import '../../base/show_custom_snackbar.dart';
+import '../../controllers/auth_controller.dart';
+import '../../controllers/cart_controller.dart';
+import '../../controllers/order_controller.dart';
+import '../../controllers/popular_product_controller.dart';
+import '../../controllers/recommended_product_controller.dart';
+import '../../controllers/user_controller.dart';
+import '../../models/place_order_model.dart';
+import '../../pages/order/delivery_options.dart';
+import '../../routes/route_helper.dart';
+import '../../utils/app_constants.dart';
+import '../../utils/colors.dart';
+import '../../utils/dimensiones.dart';
+import '../../widgets/app_icon.dart';
+import '../../widgets/app_text_field.dart';
+import '../../widgets/big_text.dart';
+import '../../pages/order/payment_option_button.dart';
+import '../../widgets/small_text.dart';
 import '../../controllers/location_controller.dart';
 
 class CartPage extends StatelessWidget {
@@ -384,6 +386,7 @@ class CartPage extends StatelessWidget {
                         onTap: () {
                           if (Get.find<AuthController>().userLoggedIn()) {
                             if (Get.find<LocationController>().addressList.isEmpty) {
+                              AppConstants.isOrderBack = true;
                               Get.toNamed(RouteHelper.getAddressPage());
                             }else{
                               var location = Get.find<LocationController>().getUserAddress();
@@ -394,7 +397,7 @@ class CartPage extends StatelessWidget {
                                   orderAmount: 100.0,
                                   distance: 10.0,
                                   scheduleAt: '',
-                                  orderNote: orderController.foodNote,
+                                  orderNote: orderController.foodNote.length > 0 ? orderController.foodNote : "Sin Observacion",
                                   address: location.address,
                                   latitude: location.latitude,
                                   longitude: location.longitude,

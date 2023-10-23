@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/controllers/order_controller.dart';
-import 'package:flutter_tienda_comida/utils/dimensiones.dart';
+
+import '../../controllers/order_controller.dart';
+import '../../utils/dimensiones.dart';
+
 import 'package:get/get.dart';
 
 import '../../utils/colors.dart';

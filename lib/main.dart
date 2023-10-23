@@ -1,12 +1,11 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
-import 'package:flutter_tienda_comida/controllers/popular_product_controller.dart';
-import 'package:flutter_tienda_comida/controllers/recommended_product_controller.dart';
-import 'package:flutter_tienda_comida/routes/route_helper.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
+import 'package:saiskarFood/controllers/cart_controller.dart';
+import 'package:saiskarFood/controllers/popular_product_controller.dart';
+import 'package:saiskarFood/controllers/recommended_product_controller.dart';
+import 'package:saiskarFood/routes/route_helper.dart';
+import 'package:saiskarFood/utils/colors.dart';
 import 'package:get/get.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'controllers/dessert_product_controller.dart';
@@ -19,10 +18,10 @@ import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future<dynamic> myBackgroudMessageHeandler(RemoteMessage message) async {
-  print(
+  /*print(
       "onBackgroud: ${message.notification?.title}/${message.notification?.body}/"
           "${message.notification?.titleLocKey}"
-  );
+  );*/
 }
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
@@ -34,9 +33,9 @@ Future<void> main() async {
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-);
+  );
 
-  try{
+  /*try{
     if(GetPlatform.isMobile){
       final RemoteMessage? remoteMessage = await FirebaseMessaging.instance.getInitialMessage();
       await NotificationHelper.initialize(flutterLocalNotificationsPlugin);
@@ -46,7 +45,7 @@ Future<void> main() async {
     if(kDebugMode){
       print(e.toString());
     }
-  }
+  }*/
 
   runApp(const MyApp());
 }
@@ -66,7 +65,7 @@ class MyApp extends StatelessWidget {
                     return GetBuilder<DessertProductController>(builder: (_) {
                         return GetMaterialApp(
                           debugShowCheckedModeBanner: false,
-                          title: 'App Food',
+                          title: 'Saiskar Food',
                           //home: SignInPage(),
                           initialRoute: RouteHelper.getSplashPage(),
                           getPages: RouteHelper.routes,

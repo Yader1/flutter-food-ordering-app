@@ -1,5 +1,6 @@
-import 'package:flutter_tienda_comida/data/repository/drink_product_repo.dart';
-import 'package:flutter_tienda_comida/models/products_model.dart';
+import '../data/repository/drink_product_repo.dart';
+import '../models/products_model.dart';
+
 import 'package:get/get.dart';
 
 class DrinksProductController extends GetxController {

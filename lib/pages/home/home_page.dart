@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/pages/account/account_page.dart';
-import 'package:flutter_tienda_comida/pages/cart/cart_history.dart';
-import 'package:flutter_tienda_comida/pages/home/main_food_page.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
+
+import '../../pages/account/account_page.dart';
+import '../../pages/cart/cart_history.dart';
+import '../../pages/home/main_food_page.dart';
+import '../../utils/colors.dart';
 
 import '../order/order_page.dart';
 //import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';

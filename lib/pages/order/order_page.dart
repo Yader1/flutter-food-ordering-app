@@ -1,9 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/base/custom_app_bar.dart';
-import 'package:flutter_tienda_comida/controllers/auth_controller.dart';
-import 'package:flutter_tienda_comida/pages/order/view_order.dart';
+
+import '../../base/custom_app_bar.dart';
+import '../../controllers/auth_controller.dart';
+import '../../pages/order/view_order.dart';
+
 import 'package:get/get.dart';
 
 import '../../base/no_data_page.dart';
@@ -38,7 +40,7 @@ class _OrderPageState extends State<OrderPage> with TickerProviderStateMixin{
   @override
   Widget build(BuildContext context) {
     return _isLoggedIn ? Scaffold(
-      appBar: const CustomAppBar(title: "My orders"),
+      appBar: const CustomAppBar(title: "Mis ordenes"),
       body: Column(
         children: [
           SizedBox(
@@ -50,8 +52,8 @@ class _OrderPageState extends State<OrderPage> with TickerProviderStateMixin{
               unselectedLabelColor: Theme.of(context).disabledColor,
               controller: _tabController,
               tabs: const [
-                Tab(text: "Current"),
-                Tab(text: "History")
+                Tab(text: "Actuales"),
+                Tab(text: "Historia")
               ],
             ),
           ),
@@ -67,9 +69,9 @@ class _OrderPageState extends State<OrderPage> with TickerProviderStateMixin{
         ],
       ),
     ) : const Scaffold(
-      appBar: CustomAppBar(title: "Orders"),
+      appBar: CustomAppBar(title: "Pedidos"),
       body: Center(
-        child: NoDataPage(text: "Inicie sesion", imgPath: "assets/image/undraw_unlock.svg"),
+        child: NoDataPage(text: "Iniciar sesión", imgPath: "assets/image/undraw_unlock.svg"),
       ),
     );
   }

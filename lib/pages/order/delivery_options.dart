@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/controllers/order_controller.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
+import 'package:saiskarFood/controllers/order_controller.dart';
+import 'package:saiskarFood/utils/colors.dart';
 import 'package:get/get.dart';
 
 import '../../utils/dimensiones.dart';

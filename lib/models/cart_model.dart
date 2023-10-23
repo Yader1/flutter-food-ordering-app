@@ -1,4 +1,4 @@
-import 'package:flutter_tienda_comida/models/products_model.dart';
+import '../models/products_model.dart';
 
 class CartModel {
   int? id;

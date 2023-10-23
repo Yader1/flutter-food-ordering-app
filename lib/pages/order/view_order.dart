@@ -1,9 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/base/custom_loader.dart';
-import 'package:flutter_tienda_comida/models/order_model.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
+
+import '../../base/custom_loader.dart';
+import '../../models/order_model.dart';
+import '../../utils/colors.dart';
+
 import 'package:get/get.dart';
 
 import '../../base/no_data_page.dart';
@@ -46,7 +48,7 @@ class ViewOrder extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                Text("#order ID", style: TextStyle(fontSize: Dimenciones.font12, fontWeight: FontWeight.w700)),
+                                Text("#orden ID", style: TextStyle(fontSize: Dimenciones.font12, fontWeight: FontWeight.w700)),
                                 SizedBox(width: Dimenciones.width10/2),
                                 Text("#${orderList[index].id}"),
                               ],
@@ -82,7 +84,7 @@ class ViewOrder extends StatelessWidget {
                                         children: [
                                           Icon(Icons.send_to_mobile, color: AppColors.mainColor),
                                           SizedBox(width: Dimenciones.width10/2),
-                                          Text("Track order", style: TextStyle(color: AppColors.mainColor, fontSize: Dimenciones.font12))
+                                          Text("Pista de la Orden", style: TextStyle(color: AppColors.mainColor, fontSize: Dimenciones.font12))
                                         ],
                                       )
                                   ),

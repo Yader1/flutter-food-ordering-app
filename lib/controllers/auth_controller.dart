@@ -1,6 +1,7 @@
-import 'package:flutter_tienda_comida/data/repository/auth_repo.dart';
-import 'package:flutter_tienda_comida/models/response_modal.dart';
-import 'package:flutter_tienda_comida/models/signup_body_model.dart';
+import '../data/repository/auth_repo.dart';
+import '../models/response_modal.dart';
+import '../models/signup_body_model.dart';
+
 import 'package:get/get.dart';
 
 class AuthController extends GetxController implements GetxService {

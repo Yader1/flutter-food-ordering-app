@@ -1,5 +1,6 @@
-import 'package:flutter_tienda_comida/data/api/api_client.dart';
-import 'package:flutter_tienda_comida/utils/app_constants.dart';
+import '../../data/api/api_client.dart';
+import '../../utils/app_constants.dart';
+
 import 'package:get/get.dart';
 
 class RecommendedProductRepo extends GetxService {

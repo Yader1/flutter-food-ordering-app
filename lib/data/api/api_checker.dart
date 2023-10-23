@@ -1,5 +1,5 @@
-import 'package:flutter_tienda_comida/base/show_custom_snackbar.dart';
-import 'package:flutter_tienda_comida/routes/route_helper.dart';
+import 'package:saiskarFood/base/show_custom_snackbar.dart';
+import 'package:saiskarFood/routes/route_helper.dart';
 import 'package:get/get.dart';
 
 class ApiChecker{

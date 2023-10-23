@@ -1,4 +1,5 @@
-import 'package:flutter_tienda_comida/models/user_model.dart';
+import '../models/user_model.dart';
+
 import 'package:get/get.dart';
 
 import '../data/repository/user_repo.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
 
+import '../utils/colors.dart';
 import '../utils/dimensiones.dart';
 
 class CustomLoader extends StatelessWidget {

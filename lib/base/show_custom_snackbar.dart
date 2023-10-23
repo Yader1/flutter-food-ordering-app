@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/widgets/big_text.dart';
 import 'package:get/get.dart';
+
+import '../widgets/big_text.dart';
 
 void showCustomSnackBar(String message,{bool isError = true, String title = "Error"}) {
   Get.snackbar(title, message, titleText: BigText(text: title, color: Colors.white,),
