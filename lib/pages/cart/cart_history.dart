@@ -21,10 +21,8 @@ class CartHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var product = Get.find<PopularProductController>().popularProductList[1];
-    Get.find<PopularProductController>().initProduct(product, Get.find<CartController>());
-
     var getCartHistoryList = Get.find<CartController>().getCartHistoryList().reversed.toList();
+ 
     Map<String, int> cartItemsPerOrder = Map();
 
     for (int i = 0; i < getCartHistoryList.length; i++) {
@@ -71,13 +69,14 @@ class CartHistory extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               BigText(text: "Historial del carrito", color: Colors.white),
-              /*GestureDetector(
+              GestureDetector(
                 onTap: () {Get.toNamed(RouteHelper.getCartPage());},
                 child: AppIcon(
                   icon: Icons.shopping_cart_outlined,
                   iconColor: AppColors.mainColor,
                 ),
-              ),*/
+              ),
+              /*
               GetBuilder<PopularProductController>(builder: (controller) {
                     return GestureDetector(
                         onTap: () {
@@ -113,6 +112,7 @@ class CartHistory extends StatelessWidget {
                           ],
                         ));
                   })
+              */
             ],
           ),
         ),
