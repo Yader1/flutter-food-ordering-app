@@ -1,5 +1,6 @@
-import 'package:saiskarFood/base/show_custom_snackbar.dart';
-import 'package:saiskarFood/routes/route_helper.dart';
+import '../../base/show_custom_snackbar.dart';
+import '../../routes/route_helper.dart';
+
 import 'package:get/get.dart';
 
 class ApiChecker{

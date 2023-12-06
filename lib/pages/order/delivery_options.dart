@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:saiskarFood/controllers/order_controller.dart';
-import 'package:saiskarFood/utils/colors.dart';
 import 'package:get/get.dart';
 
+import '../../controllers/order_controller.dart';
+import '../../utils/colors.dart';
 import '../../utils/dimensiones.dart';
 
 class DeliveryOptions extends StatelessWidget {
