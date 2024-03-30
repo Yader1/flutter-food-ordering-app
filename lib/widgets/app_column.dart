@@ -14,7 +14,7 @@ class AppColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      BigText(text: text, size: Dimenciones.font26),
+      BigText(text: text, size: Dimenciones.font20),
       SizedBox(
         height: Dimenciones.height10,
       ),

@@ -1,16 +1,23 @@
-# flutter_tienda_comida
+# Fast food shop app
+Android, iOS
+<br/>
 
-A new Flutter project.
+### Framework used:
+* [ Getx ](https://pub.dev/packages/get)
+* [ GoogleMaps ](https://pub.dev/packages/google_maps_flutter)
+* [ Laravel echo  ](https://github.com/kakajansh/echo.git)
 
-## Getting Started
+### FoodShop backend project:
+* [ API-REST-LARAVEL-FOOD  ](hhttps://github.com/Yader1/api-rest-laravel-food)
 
-This project is a starting point for a Flutter application.
+![Login](assets/screens/screen_login.png) | ![signup](assets/screens/screen_crear.png) | ![Pagina Principal](assets/screens/screen_index.png) 
+-----------------------------------|------------------------------------|-----------------------------------
 
-A few resources to get you started if this is your first Flutter project:
+![Detalle de item](assets/screens/screen_detalle_item.png) | ![Detalle del carito](assets/screens/screen_detalle_carito.png) | ![Detalle de metodo de pago](assets/screens/screen_opcion_pago.png) 
+-----------------------------------|------------------------------------|-----------------------------------
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![Lista de ordenes](assets/screens/screen_detalle_ordenes.png) | ![Historial](dassets/screens/screen_historial.png) | ![Perfil](assets/screens/screen_perfil.png) 
+-----------------------------------|------------------------------------|-----------------------------------
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Direccion](assets/screens/screen_direccion.png) | ![MsExcitoso](assets/screens/screen_mensaje_exitoso.png)
+-----------------------------------|------------------------------------|-----------------------------------

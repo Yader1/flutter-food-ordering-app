@@ -96,7 +96,7 @@ class CartPage extends StatelessWidget {
                                 itemBuilder: (_, index) {
                                   return Container(
                                     width: double.maxFinite,
-                                    height: Dimenciones.height20 * 5,
+                                    height: Dimenciones.height20 * 6,
                                     margin: EdgeInsets.only(
                                         bottom: Dimenciones.height10),
                                     child: Row(
@@ -139,100 +139,58 @@ class CartPage extends StatelessWidget {
                                             height: Dimenciones.height20 * 5,
                                             decoration: BoxDecoration(
                                                 image: DecorationImage(
-                                                    fit: BoxFit.cover,
-                                                    image: NetworkImage(
-                                                        AppConstants.BASE_URL +
-                                                            AppConstants
-                                                                .UPLOAD_URL +
-                                                            cartController
-                                                                .getItems[index]
-                                                                .img!)),
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Dimenciones.radius20),
+                                                  fit: BoxFit.cover,
+                                                  image: NetworkImage(
+                                                    AppConstants.BASE_URL + AppConstants.UPLOAD_URL + cartController.getItems[index].img!
+                                                  )
+                                                ),
+                                                borderRadius: BorderRadius.circular(Dimenciones.radius20),
                                                 color: Colors.white),
                                           ),
                                         ),
                                         SizedBox(width: Dimenciones.width10,),
                                         Expanded(
                                           child: Container(
-                                          height: Dimenciones.height20 * 5,
+                                          height: Dimenciones.height20 * 6,
                                           child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                             children: [
-                                              BigText(
-                                                text: cartController
-                                                    .getItems[index].name!,
-                                                color: Colors.black54,
-                                              ),
+                                              BigText(text: cartController.getItems[index].name!, color: Colors.black54),
                                               SmallText(text: "Picante"),
                                               Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
+                                                mainAxisAlignment:MainAxisAlignment.spaceBetween,
                                                 children: [
                                                   BigText(
-                                                    text: "\$ ${cartController
-                                                            .getItems[index]
-                                                            .price}",
+                                                    text: "\$ ${cartController.getItems[index].price}",
                                                     color: Colors.redAccent,
                                                   ),
                                                   Container(
                                                     padding: EdgeInsets.only(
-                                                        top: Dimenciones
-                                                            .height10/2,
-                                                        bottom: Dimenciones
-                                                            .height10/2,
-                                                        left:
-                                                            Dimenciones.width10,
-                                                        right: Dimenciones
-                                                            .width10/2),
+                                                      top: Dimenciones.height10/2,
+                                                      bottom: Dimenciones.height10/2,
+                                                      left:Dimenciones.width10,
+                                                      right: Dimenciones.width10/2
+                                                    ),
                                                     decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius.circular(
-                                                                Dimenciones
-                                                                    .radius20),
-                                                        color: Colors.white),
+                                                      borderRadius: BorderRadius.circular(Dimenciones.radius20),
+                                                      color: Colors.white
+                                                    ),
                                                     child: Row(
                                                       children: [
                                                         GestureDetector(
                                                           onTap: () {
-                                                            cartController.addItem(
-                                                                _cartList[index]
-                                                                    .product!,
-                                                                -1);
+                                                            cartController.addItem(_cartList[index].product!,-1);
                                                           },
-                                                          child: Icon(
-                                                              Icons.remove,
-                                                              color: AppColors
-                                                                  .signColor),
+                                                          child: Icon(Icons.remove,color: AppColors.signColor),
                                                         ),
-                                                        SizedBox(
-                                                            width: Dimenciones
-                                                                    .width10 /
-                                                                2),
-                                                        BigText(
-                                                            text: _cartList[
-                                                                    index]
-                                                                .quantity
-                                                                .toString()),
-                                                        SizedBox(
-                                                            width: Dimenciones
-                                                                    .width10 /
-                                                                2),
+                                                        SizedBox(width: Dimenciones.width10/2),
+                                                        BigText(text: _cartList[index].quantity.toString()),
+                                                        SizedBox(width: Dimenciones.width10 / 2),
                                                         GestureDetector(
-                                                          onTap: () {
-                                                            cartController.addItem(
-                                                                _cartList[index]
-                                                                    .product!,
-                                                                1);
+                                                          onTap: () {cartController.addItem(_cartList[index].product!,1);
                                                           },
-                                                          child: Icon(Icons.add,
-                                                              color: AppColors
-                                                                  .signColor),
+                                                          child: Icon(Icons.add,color: AppColors.signColor),
                                                         ),
                                                       ],
                                                     ),
