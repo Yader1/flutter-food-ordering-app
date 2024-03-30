@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
-import 'package:flutter_tienda_comida/data/repository/popular_product_repo.dart';
-import 'package:flutter_tienda_comida/models/cart_model.dart';
-import 'package:flutter_tienda_comida/models/products_model.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
+
+import '../controllers/cart_controller.dart';
+import '../data/repository/popular_product_repo.dart';
+import '../models/cart_model.dart';
+import '../models/products_model.dart';
+import '../utils/colors.dart';
+
 import 'package:get/get.dart';
 
 class PopularProductController extends GetxController {
@@ -54,8 +56,8 @@ class PopularProductController extends GetxController {
     if ((_inCartItems + quantity) < 0) {
       //Mensaje para el usuario
       Get.snackbar(
-        "Item count",
-        "You can't reduce more!",
+        "Recuento de elementos",
+        "¡No se puede reducir más!",
         backgroundColor: AppColors.mainColor,
         colorText: Colors.white,
       );
@@ -67,8 +69,8 @@ class PopularProductController extends GetxController {
     } else if ((_inCartItems + quantity) > 20) {
       //Mensaje para el usuario
       Get.snackbar(
-        "Item count",
-        "You can't add more!",
+        "Recuento de elementos",
+        "¡No puedes agregar más!",
         backgroundColor: AppColors.mainColor,
         colorText: Colors.white,
       );

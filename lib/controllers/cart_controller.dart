@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/data/repository/cart_repo.dart';
-import 'package:flutter_tienda_comida/models/cart_model.dart';
-import 'package:flutter_tienda_comida/models/products_model.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
+
+import '../data/repository/cart_repo.dart';
+import '../models/cart_model.dart';
+import '../models/products_model.dart';
+import '../utils/colors.dart';
+
 import 'package:get/get.dart';
 
 class CartController extends GetxController {
@@ -55,7 +57,7 @@ class CartController extends GetxController {
         });
       } else {
         Get.snackbar(
-            "Item count", "You should at least add an item in the cart",
+            "Recuento de elementos", "Al menos deberías añadir un artículo en el carrito.",
             backgroundColor: AppColors.mainColor, colorText: Colors.white);
       }
     }
@@ -134,5 +136,28 @@ class CartController extends GetxController {
   void clear() {
     _items = {};
     update();
+  }
+
+  List<CartModel> getCartHistoryList() {
+    return cartRepo.getCartHistoryList();
+  }
+
+  set setItems(Map<int, CartModel> setItems) {
+    _items = {};
+    _items = setItems;
+  }
+
+  void addToCartList() {
+    cartRepo.addToCartList(getItems);
+    update();
+  }
+
+  void clearCartHistory() {
+    cartRepo.clearCartHistory();
+    update();
+  }
+
+  void removeCartSharedPreference(){
+    cartRepo.removeCartSharedPreference();
   }
 }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
-import 'package:flutter_tienda_comida/utils/dimensiones.dart';
-import 'package:flutter_tienda_comida/widgets/big_text.dart';
-import 'package:flutter_tienda_comida/widgets/icon_and_text_widget.dart';
-import 'package:flutter_tienda_comida/widgets/small_text.dart';
+
+import '../utils/colors.dart';
+import '../utils/dimensiones.dart';
+import '../widgets/big_text.dart';
+import '../widgets/icon_and_text_widget.dart';
+import '../widgets/small_text.dart';
 
 class AppColumn extends StatelessWidget {
   //Atributos a pasar

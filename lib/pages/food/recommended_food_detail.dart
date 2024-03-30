@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/controllers/cart_controller.dart';
-import 'package:flutter_tienda_comida/controllers/popular_product_controller.dart';
-import 'package:flutter_tienda_comida/controllers/recommended_product_controller.dart';
-import 'package:flutter_tienda_comida/pages/cart/cart_page.dart';
-import 'package:flutter_tienda_comida/routes/route_helper.dart';
-import 'package:flutter_tienda_comida/utils/app_constants.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
-import 'package:flutter_tienda_comida/utils/dimensiones.dart';
-import 'package:flutter_tienda_comida/widgets/app_icon.dart';
-import 'package:flutter_tienda_comida/widgets/big_text.dart';
-import 'package:flutter_tienda_comida/widgets/exandable_text_widget.dart';
 import 'package:get/get.dart';
+
+import '../../controllers/cart_controller.dart';
+import '../../controllers/popular_product_controller.dart';
+import '../../controllers/recommended_product_controller.dart';
+import '../../routes/route_helper.dart';
+import '../../utils/app_constants.dart';
+import '../../utils/colors.dart';
+import '../../utils/dimensiones.dart';
+import '../../widgets/app_icon.dart';
+import '../../widgets/big_text.dart';
+import '../../widgets/exandable_text_widget.dart';
 
 class RecommendeFoodDetail extends StatelessWidget {
   final int pageId;
@@ -19,10 +19,8 @@ class RecommendeFoodDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var product =
-        Get.find<RecommendedProductController>().recommendedProductList[pageId];
-    Get.find<PopularProductController>()
-        .initProduct(product, Get.find<CartController>());
+    var product = Get.find<RecommendedProductController>().recommendedProductList[pageId];
+    Get.find<PopularProductController>().initProduct(product, Get.find<CartController>());
     return Scaffold(
         backgroundColor: Colors.white,
         body: CustomScrollView(
@@ -68,7 +66,7 @@ class RecommendeFoodDetail extends StatelessWidget {
                                 : Container(),
                             Get.find<PopularProductController>().totalItems >= 1
                                 ? Positioned(
-                                    right: 3,
+                                    right: 5.5,
                                     top: 3,
                                     child: BigText(
                                       text: Get.find<PopularProductController>()
@@ -207,7 +205,7 @@ class RecommendeFoodDetail extends StatelessWidget {
                             left: Dimenciones.width20,
                             right: Dimenciones.width20),
                         child: BigText(
-                          text: "\$ ${product.price!} | Add to cart",
+                          text: "\$ ${product.price!} | Añadir a la cesta",
                           color: Colors.white,
                         ),
                         decoration: BoxDecoration(

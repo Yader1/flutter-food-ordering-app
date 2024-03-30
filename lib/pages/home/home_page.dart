@@ -1,7 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/pages/home/main_food_page.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
+
+import '../../pages/account/account_page.dart';
+import '../../pages/cart/cart_history.dart';
+import '../../pages/home/main_food_page.dart';
+import '../../utils/colors.dart';
+
+import '../order/order_page.dart';
 //import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,21 +22,11 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   List pages = [
     MainFoodPage(),
-    Container(
-      child: Center(
-        child: Text('Next page'),
-      ),
-    ),
-    Container(
-      child: Center(
-        child: Text('Next next page'),
-      ),
-    ),
-    Container(
-      child: Center(
-        child: Text('Next next next page'),
-      ),
-    ),
+    const OrderPage(),
+    const CartHistory(),
+    const AccountPage(),
+    const CartHistory(),
+    const AccountPage()
   ];
 
   void onTapNav(int index) {
@@ -103,7 +97,7 @@ class _HomePageState extends State<HomePage> {
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: AppColors.mainColor,
-        unselectedItemColor: Colors.amberAccent,
+        unselectedItemColor: AppColors.yellowColor,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         selectedFontSize: 0.0,

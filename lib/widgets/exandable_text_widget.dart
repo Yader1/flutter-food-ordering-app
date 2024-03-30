@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tienda_comida/utils/colors.dart';
-import 'package:flutter_tienda_comida/utils/dimensiones.dart';
-import 'package:flutter_tienda_comida/widgets/small_text.dart';
+import '../utils/colors.dart';
+import '../utils/dimensiones.dart';
+import './small_text.dart';
 
 class ExandableTextWidget extends StatefulWidget {
   final String text;
@@ -44,7 +44,7 @@ class _ExandableTextWidgetState extends State<ExandableTextWidget> {
             },
             child: Row(
               children: [
-                SmallText(text: "Show more", color: AppColors.mainColor,),
+                SmallText(text: "Mostrar más", color: AppColors.mainColor,),
                 Icon(hiddenText?Icons.arrow_drop_down : Icons.arrow_drop_up, color: AppColors.mainColor,)
               ],
             ),
