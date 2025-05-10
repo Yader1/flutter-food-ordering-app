@@ -6,11 +6,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator_platform_interface/src/models/position.dart';
-<<<<<<< HEAD
-import 'package:google_maps_webservice/src/places.dart';
-=======
 //import 'package:google_maps_webservice/src/places.dart';
->>>>>>> master
 
 import '../data/repository/location_repo.dart';
 import '../models/address_model.dart';
@@ -59,11 +55,7 @@ class LocationController extends GetxController implements GetxService {
   bool get buttonDisabled => _buttonDisabled;
 
   //Save the google map suggestions for address
-<<<<<<< HEAD
-  List<Prediction> _predictionList = [];
-=======
   //List<Prediction> _predictionList = [];
->>>>>>> master
 
   void setMapController(GoogleMapController mapController) {
     _mapController = mapController;
@@ -85,11 +77,8 @@ class LocationController extends GetxController implements GetxService {
             altitude: 1,
             speedAccuracy: 1,
             speed: 1,
-<<<<<<< HEAD
-=======
             altitudeAccuracy: 0.0, 
             headingAccuracy: 0.0,
->>>>>>> master
           );
         } else {
           _pickPosition = Position(
@@ -100,13 +89,9 @@ class LocationController extends GetxController implements GetxService {
             accuracy: 1,
             altitude: 1,
             speedAccuracy: 1,
-<<<<<<< HEAD
-            speed: 1,
-=======
             speed: 1, 
             altitudeAccuracy: 0.0, 
             headingAccuracy: 0.0,
->>>>>>> master
           );
         }
         ResponseModel _responseModel = await getZone(position.target.latitude.toString(), position.target.longitude.toString(), false);
@@ -252,11 +237,7 @@ class LocationController extends GetxController implements GetxService {
     return _responseModel;
   }
 
-<<<<<<< HEAD
-  Future<List<Prediction>> searchLocation(BuildContext context, String text) async {
-=======
   /*Future<List<Prediction>> searchLocation(BuildContext context, String text) async {
->>>>>>> master
     if(text.isNotEmpty){
       Response response = await locationRepo.searchLocation(text);
 
@@ -269,15 +250,9 @@ class LocationController extends GetxController implements GetxService {
     }
 
     return _predictionList;
-<<<<<<< HEAD
-  }
-
-  setLocation(String placeID, String address, GoogleMapController mapController) async {
-=======
   }*/
 
   /*setLocation(String placeID, String address, GoogleMapController mapController) async {
->>>>>>> master
     _loading = true;
     update();
     PlacesDetailsResponse details;
@@ -305,9 +280,5 @@ class LocationController extends GetxController implements GetxService {
     }
     _loading = false;
     update();
-<<<<<<< HEAD
-  }
-=======
   }*/
->>>>>>> master
 }

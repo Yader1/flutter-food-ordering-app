@@ -96,11 +96,7 @@ class CartPage extends StatelessWidget {
                                 itemBuilder: (_, index) {
                                   return Container(
                                     width: double.maxFinite,
-<<<<<<< HEAD
-                                    height: Dimenciones.height20 * 5,
-=======
                                     height: Dimenciones.height20 * 6,
->>>>>>> master
                                     margin: EdgeInsets.only(
                                         bottom: Dimenciones.height10),
                                     child: Row(
@@ -143,56 +139,18 @@ class CartPage extends StatelessWidget {
                                             height: Dimenciones.height20 * 5,
                                             decoration: BoxDecoration(
                                                 image: DecorationImage(
-<<<<<<< HEAD
-                                                    fit: BoxFit.cover,
-                                                    image: NetworkImage(
-                                                        AppConstants.BASE_URL +
-                                                            AppConstants
-                                                                .UPLOAD_URL +
-                                                            cartController
-                                                                .getItems[index]
-                                                                .img!)),
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        Dimenciones.radius20),
-=======
                                                   fit: BoxFit.cover,
                                                   image: NetworkImage(
                                                     AppConstants.BASE_URL + AppConstants.UPLOAD_URL + cartController.getItems[index].img!
                                                   )
                                                 ),
                                                 borderRadius: BorderRadius.circular(Dimenciones.radius20),
->>>>>>> master
                                                 color: Colors.white),
                                           ),
                                         ),
                                         SizedBox(width: Dimenciones.width10,),
                                         Expanded(
                                           child: Container(
-<<<<<<< HEAD
-                                          height: Dimenciones.height20 * 5,
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              BigText(
-                                                text: cartController
-                                                    .getItems[index].name!,
-                                                color: Colors.black54,
-                                              ),
-                                              SmallText(text: "Picante"),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  BigText(
-                                                    text: "\$ ${cartController
-                                                            .getItems[index]
-                                                            .price}",
-=======
                                           height: Dimenciones.height20 * 6,
                                           child: Column(
                                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -205,27 +163,10 @@ class CartPage extends StatelessWidget {
                                                 children: [
                                                   BigText(
                                                     text: "\$ ${cartController.getItems[index].price}",
->>>>>>> master
                                                     color: Colors.redAccent,
                                                   ),
                                                   Container(
                                                     padding: EdgeInsets.only(
-<<<<<<< HEAD
-                                                        top: Dimenciones
-                                                            .height10/2,
-                                                        bottom: Dimenciones
-                                                            .height10/2,
-                                                        left:
-                                                            Dimenciones.width10,
-                                                        right: Dimenciones
-                                                            .width10/2),
-                                                    decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius.circular(
-                                                                Dimenciones
-                                                                    .radius20),
-                                                        color: Colors.white),
-=======
                                                       top: Dimenciones.height10/2,
                                                       bottom: Dimenciones.height10/2,
                                                       left:Dimenciones.width10,
@@ -235,46 +176,10 @@ class CartPage extends StatelessWidget {
                                                       borderRadius: BorderRadius.circular(Dimenciones.radius20),
                                                       color: Colors.white
                                                     ),
->>>>>>> master
                                                     child: Row(
                                                       children: [
                                                         GestureDetector(
                                                           onTap: () {
-<<<<<<< HEAD
-                                                            cartController.addItem(
-                                                                _cartList[index]
-                                                                    .product!,
-                                                                -1);
-                                                          },
-                                                          child: Icon(
-                                                              Icons.remove,
-                                                              color: AppColors
-                                                                  .signColor),
-                                                        ),
-                                                        SizedBox(
-                                                            width: Dimenciones
-                                                                    .width10 /
-                                                                2),
-                                                        BigText(
-                                                            text: _cartList[
-                                                                    index]
-                                                                .quantity
-                                                                .toString()),
-                                                        SizedBox(
-                                                            width: Dimenciones
-                                                                    .width10 /
-                                                                2),
-                                                        GestureDetector(
-                                                          onTap: () {
-                                                            cartController.addItem(
-                                                                _cartList[index]
-                                                                    .product!,
-                                                                1);
-                                                          },
-                                                          child: Icon(Icons.add,
-                                                              color: AppColors
-                                                                  .signColor),
-=======
                                                             cartController.addItem(_cartList[index].product!,-1);
                                                           },
                                                           child: Icon(Icons.remove,color: AppColors.signColor),
@@ -286,7 +191,6 @@ class CartPage extends StatelessWidget {
                                                           onTap: () {cartController.addItem(_cartList[index].product!,1);
                                                           },
                                                           child: Icon(Icons.add,color: AppColors.signColor),
->>>>>>> master
                                                         ),
                                                       ],
                                                     ),

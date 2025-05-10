@@ -6,11 +6,7 @@ import '../../../utils/dimensiones.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:get/get.dart';
-<<<<<<< HEAD
-import 'package:google_maps_webservice/src/places.dart';
-=======
 //import 'package:google_maps_webservice/src/places.dart';
->>>>>>> master
 
 class LocationDialogue extends StatelessWidget {
   final GoogleMapController mapController;
@@ -29,12 +25,8 @@ class LocationDialogue extends StatelessWidget {
         child: SizedBox(
           width: Dimenciones.screenWidth,
           child: SingleChildScrollView(
-<<<<<<< HEAD
-            child: TypeAheadField(
-=======
             child: SizedBox()
             /*TypeAheadField(
->>>>>>> master
               textFieldConfiguration: TextFieldConfiguration(
                 controller: _controller,
                 textInputAction: TextInputAction.search,
@@ -85,11 +77,7 @@ class LocationDialogue extends StatelessWidget {
                   ),
                 );
               },
-<<<<<<< HEAD
-            ),
-=======
             ),*/
->>>>>>> master
           ),
         ),
       ),
