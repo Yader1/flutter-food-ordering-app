@@ -1,18 +1,19 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+//import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 
 import '../controllers/auth_controller.dart';
 import '../main.dart';
 
 class NotificationHelper{
+  /*
   static Future<void> initialize(FlutterLocalNotificationsPlugin notificationsPlugin) async {
     var androidInitialize = const AndroidInitializationSettings('notification_icon');
-    var iOSInitialize = const IOSInitializationSettings();
-    var initializationSettings = InitializationSettings(android: androidInitialize, iOS: iOSInitialize);
+    //var iOSInitialize = const IOSInitializationSettings();
+    //var initializationSettings = InitializationSettings(android: androidInitialize, iOS: iOSInitialize);
 
-    notificationsPlugin.initialize(initializationSettings, onSelectNotification: (String? payload){
+    /*notificationsPlugin.initialize(initializationSettings, onSelectNotification: (String? payload){
       try{
         if(payload != null && payload.isNotEmpty){
 
@@ -26,7 +27,7 @@ class NotificationHelper{
       }
 
       return;
-    });
+    });*/
 
     await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
       alert: true,
@@ -71,9 +72,11 @@ class NotificationHelper{
 
     NotificationDetails platformChannelSpecifics = NotificationDetails(
       android: androidPlatformChannelSpecifics,
-      iOS: const IOSNotificationDetails(),
+      //iOS: const IOSNotificationDetails(),
     );
 
     await fln.show(0, msg.notification!.title, msg.notification!.body, platformChannelSpecifics);
   }
+
+  */
 }

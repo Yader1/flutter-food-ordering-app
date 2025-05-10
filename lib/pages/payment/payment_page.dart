@@ -53,7 +53,7 @@ class _PaymentPageState extends State<PaymentPage> {
             width: Dimenciones.screenWidth,
             child: Stack(
               children: [
-                WebView(
+                /*WebView(
                   javascriptMode: JavascriptMode.unrestricted,
                   initialUrl: selectedUrl,
                   gestureNavigationEnabled: true,
@@ -83,7 +83,7 @@ class _PaymentPageState extends State<PaymentPage> {
                     });
                     _redirect(url);
                   },
-                ),
+                ),*/
                 _isLoading ? Center(
                   child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor)),
                 ) : const SizedBox.shrink(),
